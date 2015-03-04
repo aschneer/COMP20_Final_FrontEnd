@@ -1,4 +1,7 @@
-Project title
+# Names: Sibonay Koo, Barray Maswan, Andrew Sneer, Hunter Wapman
+
+## Title: FoodAround
+
 Problem statement
 Solution
 List all features that we will implement (and which "pick 5"s we will do)
