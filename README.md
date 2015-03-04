@@ -1,5 +1,5 @@
 ## Info
-Names: Sibonay Koo, Barry Maswan, Andrew Sneer, Hunter Wapman
+Names: Sibonay Koo, Barry Maswan, Andrew Schneer, Hunter Wapman
 Title: FoodAround
 Comp 20 Design Document
 
@@ -24,34 +24,40 @@ Don’t have to wait for food
 
 * More food sales
 * More web traffic to their websites
-Opportunity to sell or give away leftover food that they would otherwise throw out
-Opportunity to set up donation systems for soup kitchens and food pantries
-
-Features:
-Web form for restaurant to input information about a food item (restaurant, location, food description, time when ready, price)
-Master list of all food items that are currently live on the site
-Ability to sort list by restaurant, distance from current location, time when ready, and price
-Ability to “buy” (reserve) a food item on the list with a single click
-Google Maps interface to display all the current food items that are live and where they are located
-Graph displaying usage data (for example, food posts per hour, food sales, etc.)
-Pick 5:
-Geolocation
-Server-side data persistence
-Front-end framework (React)
-Reporting with charts and graphs
-SMSes
+* Opportunity to sell or give away leftover food that they would otherwise throw out
+* Opportunity to set up donation systems for soup kitchens and food pantries
 
-Data collected and used
-Location and name of restaurant
-Description of food
-Price
-Time when it will be ready
-Link to restaurant’s online menu
+## __Features:__
 
-Algorithms and special techniques used
-Sorting the list of restaurants by proximity/price/time the food will be ready etc 
+* Web form for restaurant to input information about a food item (restaurant, location, food description, time when ready, price)
+* Master list of all food items that are currently live on the site
+* Ability to sort list by restaurant, distance from current location, time when ready, and price
+* Ability to “buy” (reserve) a food item on the list with a single click
+* Google Maps interface to display all the current food items that are live and where they are located
+* Graph displaying usage data (for example, food posts per hour, food sales, etc.)
 
-APIs
-Google Maps API
-Google Graphs API
+### __Pick 5:__
+
+* Geolocation
+* Server-side data persistence
+* Front-end framework (React)
+* Reporting with charts and graphs
+* SMSes
+
+##__Data collected and used:__
+
+* Location and name of restaurant
+* Description of food
+* Price
+* Time when it will be ready
+* Link to restaurant’s online menu
+
+##__Algorithms and special techniques used:__
+
+* Sorting the list of restaurants by proximity/price/time the food will be ready etc 
+
+##__APIs:__
+
+* Google Maps API
+* Google Graphs API
 
