@@ -1,6 +1,8 @@
 ## Info
 Names: Sibonay Koo, Barry Maswan, Andrew Schneer, Hunter Wapman
+
 Title: FoodAround
+
 Comp 20 Design Document
 
 ##__Problem Statement:__
