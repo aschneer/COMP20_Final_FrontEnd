@@ -63,5 +63,5 @@ Don’t have to wait for food
 
 ##__Wireframes:__
 
-![alt text](https://raw.githubusercontent.com/tuftsdev/comp20-spring2015-team3/master/wireframes/Post.png"Post Screen Mobile")
+![alt text](https://raw.githubusercontent.com/tuftsdev/comp20-spring2015-team3/master/wireframes/Post.png)
 
