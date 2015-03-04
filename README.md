@@ -63,6 +63,6 @@ Don’t have to wait for food
 
 ##__Wireframes:__
 
-![image](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Map.png "Map Screen for Desktop")
-![image](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Post.png "Post Screen for Mobile")
-![image](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Graphs.png "Graphs Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Map.png "Map Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Post.png "Post Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Graphs.png "Graphs Screen for Mobile")
