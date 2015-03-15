@@ -20,6 +20,7 @@ var map;
 	// 	var endTime;
 	// 	var price;
 	// };
+// endTime is a Javascript Date object.
 var listings = [];
 
 // FUNCTIONS:
@@ -110,7 +111,10 @@ function init()
 	// Load all food items onto map.
 		// READ FROM DATABASE.
 		// FOR EACH ITEM, CREATE MARKER.
-	addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza","20150315-6pm",14.73);
+	// Account for time zone here...
+	var endTimeTemp = new Date(2015,3,30,19,30,0,0);
+	addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza",endTimeTemp,14.73);
+	console.log(listings);
 }
 
 
