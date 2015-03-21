@@ -10,7 +10,7 @@ OfferSidebar = React.createClass({displayName: "OfferSidebar",
         						food: offer.food, 
 					  			address: offer.address, 
 					  			when: offer.when}) );
-        		})
+        		}), ";"
       		)
       	);
 	}

@@ -2,14 +2,14 @@
 OfferSidebar = React.createClass({displayName: "OfferSidebar",
 	render: function() {
 		return (
-			React.createElement("ol", null, 
+			React.createElement("ul", null, 
 		        this.props.offers.map(function(offer) {
         			return (
-        				React.createElement(Offer, {key: offer.id, 
-        						provider: offer.provider, 
+        				React.createElement(Offer, {provider: offer.provider, 
         						food: offer.food, 
 					  			address: offer.address, 
-					  			when: offer.when}) );
+					  			when: offer.when})
+					);
         		})
       		)
       	);

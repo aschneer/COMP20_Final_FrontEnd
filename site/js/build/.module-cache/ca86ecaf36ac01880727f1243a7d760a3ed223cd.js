@@ -19,7 +19,7 @@ OfferSidebar = React.createClass({displayName: "OfferSidebar",
 Offer = React.createClass({displayName: "Offer",
 	render: function() {
 		return (
-			React.createElement("li", null, 
+			React.createElement("li", {key: this.props.key}, 
 				React.createElement("div", null, 
 					React.createElement("p", null, " Provider: ", this.props.provider), 
 					React.createElement("p", null, " Food: ", this.props.food), 
