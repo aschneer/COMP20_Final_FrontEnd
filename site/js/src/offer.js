@@ -39,4 +39,3 @@ React.render(
   	// 		address={test.address} when={test.when}/>,
   	document.getElementById('example')
 );
-
