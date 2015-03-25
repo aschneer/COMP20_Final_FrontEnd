@@ -31,7 +31,7 @@ Offer = React.createClass({displayName: "Offer",
 	}
 });
 
-// test = testdata[0];
+test = testdata[0];
 
 React.render(
 	React.createElement(OfferSidebar, {offers: data}),

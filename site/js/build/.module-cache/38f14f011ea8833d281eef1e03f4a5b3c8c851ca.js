@@ -5,7 +5,7 @@ OfferSidebar = React.createClass({displayName: "OfferSidebar",
 			React.createElement("ol", null, 
 		        this.props.offers.map(function(offer) {
         			return (
-        				React.createElement(Offer, {key: offer.provider + offer.food + offer.address + offer.when, 
+        				React.createElement(Offer, {key: offer.id, 
         						provider: offer.provider, 
         						food: offer.food, 
 					  			address: offer.address, 
@@ -31,10 +31,10 @@ Offer = React.createClass({displayName: "Offer",
 	}
 });
 
-// test = testdata[0];
+test = testdata[0];
 
 React.render(
-	React.createElement(OfferSidebar, {offers: data}),
+	React.createElement(OfferSidebar, {offers: testdata}),
   	// < Offer provider={test.provider} food={test.food} 
   	// 		address={test.address} when={test.when}/>,
   	document.getElementById('example')
