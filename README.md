@@ -42,8 +42,9 @@ Don’t have to wait for food
 
 * Geolocation
 * Server-side data persistence
+* Client-side data persistence
+    * 'your offers'
 * Front-end framework (React)
-* Reporting with charts and graphs
 * SMSes
 
 ##__Data collected and used:__
