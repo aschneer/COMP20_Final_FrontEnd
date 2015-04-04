@@ -42,8 +42,9 @@ Don’t have to wait for food
 
 * Geolocation
 * Server-side data persistence
+* Client-side data persistence
+    * 'your offers'
 * Front-end framework (React)
-* Reporting with charts and graphs
 * SMSes
 
 ##__Data collected and used:__
@@ -68,3 +69,9 @@ Don’t have to wait for food
 ![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Map.png "Map Screen for Desktop")
 ![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Post.png "Post Screen for Mobile")
 ![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Graphs.png "Graphs Screen for Mobile")
+
+#Comments by Ming
+1. I love your list of features, your team did it right
+2. I'm not really buying into using Google Graphs --seems rather useless
+3. I assume data will be entered by users?
+4. Overall: 15/15
