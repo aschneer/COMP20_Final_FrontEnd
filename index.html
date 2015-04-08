@@ -1,23 +1,102 @@
 <!DOCTYPE html>
 
 <html>
-
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="description" content="COMP 20 Final Project: 'Food Around'"/>
 		<meta name="keywords" content="Food,Schneer,Koo,Maswan,Wapman"/>
 		<meta name="author" content="Andrew Schneer, Sibonay Koo, Barry Maswan, Hunter Wapman"/>
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
 		<link rel="shortcut icon" href="./assets/pizzaSlice_01.ico"/>
 		<link rel="stylesheet" type="text/css" href="./css/desktop.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/mobile.css"/>
+
 		<title>Food Around</title>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&amplibraries=places"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&amplibraries=places"></script>
+
 		<script type="text/javascript" src="./js/main.js"></script>
+		<!-- <script src="./js/build/react.js"></script> -->
+		<!-- added in stuff for react - hunter -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	</head>
 
 	<body onload="init()">
-		<h1>Food Around!</h1>
 		<div id="map-canvas"></div>
+		<div id="example"></div>
+
+
+<!-- modified code from http://www.bootstrapzero.com/bootstrap-template/google-maps -->
+<div class="navbar navbar-custom navbar-fixed-top">
+ <div class="navbar-header"><a class="navbar-brand" href="#">Food Around!</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Restaurant Form</a></li>
+        <li><a href="#">Some link...</a></li>
+        <li>&nbsp;</li>
+      </ul>
+    </div>
+</div>
+
+
+
+<div id="map-canvas"></div>
+<div class="container-fluid" id="main">
+  <div class="row">
+  	<div class="col-xs-8"><!--map-canvas will be postioned here--></div>
+
+  	<div class="col-xs-4" id="left">
+    
+      <h2>What's available?</h2>
+      
+      <!-- item list -->
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">Food</a></div>
+      </div>
+      <p>details</p>
+      
+      <hr>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">Food</a></div>
+      </div>
+      <p>deets</p>
+      
+      <hr>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">Food</a></div>
+      </div>
+      <p>deets</p>
+      
+      <hr>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">Food</a></div>
+      </div>
+      <p>deets</p>
+      
+      <hr>
+      <!-- /item list -->   
+
+    </div>
+    
+  </div>
+</div>
+
+
+
 	</body>
 
+		<!-- Scripts -->
+		<script src="js/data.js"></script>
+		<script src="js/build/offer.js"></script>
+	</body>
 </html>
