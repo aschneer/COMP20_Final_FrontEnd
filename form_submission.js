@@ -21,7 +21,6 @@ function send_offer() {
 function callbackfunction() {
 	if (request.readyState == 4 && request.status == 200) {				
 		data = JSON.parse(request.responseText);
-		plotmarkers();
 	} else if (request.readyState == 4 && request.status != 200){
 		alert("Page not loaded");
 	}				
