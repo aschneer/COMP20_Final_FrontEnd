@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+  <title>FoodAround</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+      <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <!--<script src="form_validation.js"></script> -->
+  <script src="form_submission.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Submit food entry</h2>
+  <form role="form">
+    <div class="form-group">
+  <div class="form-group">
+      <label for="address">Address:</label>
+      <input type="name" class="form-control" id="address" placeholder="Enter address">
+    </div>
+
+      <label for="provider">Provider:</label>
+      <input type="name" class="form-control" id="provider" placeholder="Enter restaurant name">
+    </div>
+   <div class="form-group">
+      <label for="food">Food:</label>
+      <input type="name" class="form-control" id="food" placeholder="Enter food">
+    </div>
+    <div class="form-group">
+      <label for="when">Till When:</label>
+      <input type="name" class="form-control" id="when" placeholder="Enter time it'll be available till">
+    </div>
+    <button type="submit" id="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+<div>
+  <p id="response"></p>
+</div>
+
+</body>
+</html>
+
