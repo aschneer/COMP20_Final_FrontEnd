@@ -21,7 +21,6 @@ Goals for next week:
         - Name
         - email
         - phone
-
 2. Add two modes to main page:
     - Buy
         - offers map
