@@ -28,6 +28,18 @@
 		padding-bottom: 10px;
 	}
 
+	ul {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	li {
+	    display: inline;
+	    margin: 5;
+	}
+	
+
 	.navbar-custom .icon-bar {
 		background-color:#fff;
 	}
@@ -76,4 +88,18 @@
 	    overflow:hidden;
 	    display: inline-block;
 	}
+
+	#submit_offer_form {
+		height:400px;
+		margin-top: 20px;
+	    bottom:0;
+	    overflow:hidden;
+	    display: inline-block;
+	}
+
+	#food_items{
+		margin: 10;
+	}
+
+
 }
