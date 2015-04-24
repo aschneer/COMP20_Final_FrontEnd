@@ -1,0 +1,16 @@
+Progress made this week:
+1. node.js server was set up and is now running
+2. Restaurants can now successfully post food offers to the server via form
+3. Front end layout: index page is now more responsive (elements stack when browser is resized)
+
+Challenges faced over the past week:
+1. Using Map's address API to validate addresses on client side
+2. Difficulty implementing collapsible menu for portable devices
+3. Stacking yet to completely properly work
+
+Goals for next week:
+1. Make site completely responsive
+2. Create css file for web-pages
+3. Implement address validation on client side
+4. Link website pages
+
