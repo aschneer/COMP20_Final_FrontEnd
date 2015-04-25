@@ -82,16 +82,14 @@
 	}
 
 	#map-canvas {
-	    height:400px;
-		margin-top: 20px;
+	    height:100%;
 	    bottom:0;
 	    overflow:hidden;
 	    display: inline-block;
 	}
 
 	#submit_offer_form {
-		height:400px;
-		margin-top: 20px;
+		height:100%;
 	    bottom:0;
 	    overflow:hidden;
 	    display: inline-block;
@@ -100,6 +98,8 @@
 	#food_items{
 		margin: 10;
 	}
+
+
 
 
 }

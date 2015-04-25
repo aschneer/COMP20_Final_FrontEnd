@@ -60,6 +60,11 @@
 		padding-left: 16px;
 	}
 
+	#main {
+		padding-right: 0;
+		margin-right:0;
+	}
+
 	#main, #main>.row {
 		width: 100%;
 	}
