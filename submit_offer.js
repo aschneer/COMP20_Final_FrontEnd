@@ -20,7 +20,8 @@ var doRequest = function(method, url, params) {
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
-            return req.responseText;
+            // SHOULD CALL REUPDATED SOMETHING ELSE
+            console.log('worked yo.');
         }
     };
     req.send(params);
