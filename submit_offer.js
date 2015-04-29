@@ -11,7 +11,10 @@ var submit_init = function() {
     doRequest('POST', url, params);
     data = JSON.parse(result);
     $('#response').append(data);
+<<<<<<< HEAD
     console.log(data);
+=======
+>>>>>>> 5228ab36c692b819d41ce12e5ef3452c1717c6a8
 };
 
 var doRequest = function(method, url, params) {
@@ -20,9 +23,9 @@ var doRequest = function(method, url, params) {
     req.open(method, url, true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function() {
-        if (req.readyState < 4) {
-        } else if (req.readyState == 4 && req.status == 200) {
-            return req.responseText;
+        if (req.readyState == 4 && req.status == 200) {
+            // SHOULD CALL REUPDATED SOMETHING ELSE
+            console.log('worked yo.');
         }
     };
     req.send(params);
