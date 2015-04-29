@@ -113,7 +113,7 @@ function init()
 	// Account for time zone here...
 	var endTimeTemp = new Date(2015,3,30,19,30,0,0);
 	addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza",endTimeTemp,14.73);
-	console.log(listings);
+	//console.log(listings);
 }
 
 
