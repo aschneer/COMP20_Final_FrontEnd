@@ -8,6 +8,8 @@
     <meta name="author" content="Andrew Schneer, Sibonay Koo, Barry Maswan, Hunter Wapman"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
 
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="./assets/pizzaSlice_01.ico"/>
@@ -25,24 +27,30 @@
     <!-- <script src="./js/build/react.js"></script> -->
     <!-- added in stuff for react - hunter -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <style>
+    #show_me_food_button{
+      font-family: 'Shadows Into Light Two', cursive;
+    }
+
+    </style>
+
   </head>
 
   <body onload="init()">
 
     <!-- modified code from http://www.bootstrapzero.com/bootstrap-template/google-maps -->
     <div class="navbar navbar-custom navbar-fixed-top">
-      <div class="navbar-header"><a class="navbar-brand" href="#">Food Around!</a>
           <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-      </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active" id="show_me_food_button"><a href="#">Show me food</a></li>
+          <li class="active" id="show_me_food_button"><a href="#"><font size="6">Food Around!</font></a></li>
           <li class="active" id="submit_offer_button"><a href="#">Submit an offer</a></li>
-          <li class="active"><a href="#">Login/Sign up</a></li>
+          <li class="active" id="login_button"><a href="#">Login/Sign up</a></li>
           <li>&nbsp;</li>
          </ul>
       </div>
@@ -54,35 +62,91 @@
       <div class="row">
           <div id="map-canvas" class="col-xs-8">           
           </div>
-          <div  id="submit_offer_form" class="col-xs-8">
-          <h2>Submit food entry</h2>
-          <form role="form">
-            <div class="form-group">
-          <div class="form-group">
-              <label for="address">Address:</label>
-              <input type="name" class="form-control" id="address" placeholder="Enter address">
-            </div>
 
-              <label for="provider">Provider:</label>
-              <input type="name" class="form-control" id="provider" placeholder="Enter restaurant name">
-            </div>
-           <div class="form-group">
-              <label for="food">Food:</label>
-              <input type="name" class="form-control" id="food" placeholder="Enter food">
-            </div>
-            <div class="form-group">
-              <label for="when">Till When:</label>
-              <input type="name" class="form-control" id="when" placeholder="Enter time it'll be available till">
-            </div>
-            <button type="submit" id="submit" class="btn btn-default">Submit</button>
-          </form>
-        </div>
+          <div  id="submit_offer_form" class="col-xs-8">
+            <h2>Submit food entry</h2>
+                <form role="form">
+                  <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="name" class="form-control" id="address" placeholder="Enter address">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provider">Provider:</label>
+                    <input type="name" class="form-control" id="provider" placeholder="Enter restaurant name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="food">Food:</label>
+                    <input type="name" class="form-control" id="food" placeholder="Enter food">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="when">Till When:</label>
+                    <input type="name" class="form-control" id="when" placeholder="Enter time it'll be available till">
+                  </div>
+
+                  <button type="submit" id="submit" class="btn btn-default">Submit</button>
+                </form>
+          </div>
+
+          <!-- Login form -->
+          <div  id="login_form" class="col-xs-8">
+            <h2>Login</h2>
+                <form role="form">
+                  <div class="form-group">
+                    <label for="address">Username:</label>
+                    <input type="name" class="form-control" id="address" placeholder="Enter address">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provider">Password:</label>
+                    <input type="password" class="form-control" id="provider" placeholder="Enter restaurant name">
+                  </div>
+
+                  <button type="submit" id="submit" class="btn btn-default">Login</button>
+                  <a href="#" id="sign_up_button">Sign Up</a>
+                </form>
+          </div>
+
+          <!-- Sign Up form -->
+          <div  id="signup_form" class="col-xs-8">
+            <h2>Sign Up</h2>
+                <form role="form">
+                  <div class="form-group">
+                    <label for="address">Username:</label>
+                    <input type="name" class="form-control" id="address" placeholder="Enter username">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="address">Name:</label>
+                    <input type="name" class="form-control" id="address" placeholder="Enter full name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provider">Email:</label>
+                    <input type="email" class="form-control" id="provider" placeholder="Enter email">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="food">Phone Number:</label>
+                    <input type="name" class="form-control" id="food" placeholder="Enter Phone Number">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="when">Password:</label>
+                    <input type="password" class="form-control" id="when" placeholder="Enter Password">
+                  </div>
+
+                  <button type="submit" id="submit" class="btn btn-default">Sign Up</button>
+                </form>
+          </div>
 
 
           <div class="col-xs-4 col" id="right-to-bottom">
             <div id="customer_div">
             <ul>
-              <li id="whats_available_button"><a href="#">What's available?</a></li>
+              <li id="whats_available_button" ><font size="4"><a href="#">What's available?</a></font></li>
               <li id="claimed_offers_button"><a href="#">Claimed offers</a></li>
             </ul>
           
@@ -124,9 +188,7 @@
                 </div>
 
               </div>
-                
-
-          </div>
+            </div>
       </div>
     </div>
 
@@ -135,6 +197,13 @@
   </body>
 
     <!-- Scripts -->
+    <script>
+  $(document).ready(function(){
+    $("#home_button").click(function() {
+      init();
+    });
+  });
+  </script>
     <script src="js/data.js"></script>
     <script src="js/build/offer.js"></script>
   </body>

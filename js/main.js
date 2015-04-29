@@ -35,8 +35,7 @@ function addListing(lat,lng,address,restaurant,description,endTime,price)
 		map: map,
 		title: String(newIndex),
 		position: new google.maps.LatLng(lat,lng),
-		visible: true,
-		icon: "./assets/pizzaSlice_01_small.png"
+		visible: true
 	};
 	var newMarker = new google.maps.Marker(markerOptions);
 	var infoWindowContent = "test";
