@@ -13,7 +13,7 @@ Challenges faced over the past week:
 4. Issues with where form submit buttons sent to.
 
 Goals for next week:
-1. Add login/signup page
+1. Add login/signup page => COMMENTS BY MING: is this really necessary?
     - stand alone page
     - and on mainpage
     - fields:
