@@ -14,3 +14,7 @@ Goals for next week:
 3. Implement address validation on client side
 4. Link website pages
 
+#Comments by Ming
+1. "Stacking yet to completely properly work" --what's stacking?
+2. Where's status report 3?
+3. It seems like you are focusing a lot on client-side / styling stuff...
