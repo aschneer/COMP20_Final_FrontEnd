@@ -1,27 +1,28 @@
-var request = new XMLHttpRequest();
-var provider;
-var food;
-var address;
-var when;
+$(document).ready(function(){
+	$("#submit").click(init);
+});
 
-function init() {
-	provider = document.getElementById("provider");
-	food = document.getElementById("food");
-	address = document.getElementById("address");
-	when = document.getElementById("when");
-}
+var init = function() {
+	var url = "http://localhost:5000/sendOffer";
+	// var url = "https://c20t3fdb.herokuapp.com/sendOffer";
+	var params = "provider=" + document.getElementById("provider").value + "&food=" + document.getElementById("food").value + 
+				"&address=" + document.getElementById("address").value + "&when=" + document.getElementById("when").value;
 
-function send_offer() {
-				request.open("POST","https://secret-about-box.herokuapp.com/sendLocation",true);
-				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				request.onreadystatechange = callbackfunction;
-				request.send("provider=" + provider + "&food=" + food + "&address=" + address + "&when=" + when);
-			}
-			
-function callbackfunction() {
-	if (request.readyState == 4 && request.status == 200) {				
-		data = JSON.parse(request.responseText);
-	} else if (request.readyState == 4 && request.status != 200){
-		alert("Page not loaded");
-	}				
-}
+	doRequest('POST', url, params);
+	data = JSON.parse(result);
+	$('#response').append(data);	
+};
+
+var doRequest = function(method, url, params) {
+    var req = new XMLHttpRequest();
+
+    req.open(method, url, true);
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.onreadystatechange = function() {
+        if (req.readyState < 4) {
+        } else if (req.readyState == 4 && req.status == 200) {
+            return req.responseText;
+        }
+    };
+    req.send(params);
+};
