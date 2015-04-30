@@ -1,43 +1,53 @@
-// OfferSidebar = React.createClass({
+/////////////////////////////////////////////////////////////////////////
+// REACT CODE HERE FOR GENERATING SIDEBAR
+/////////////////////////////////////////////////////////////////////////
 
-// 	render: function() {
-// 		return (
-// 			<ol>
-// 		        {this.props.offers.map(function(offer) {
-//         			return (
-//         				<Offer  key 		=	{offer._id}
-//         						id 			= 	{offer._id}
-//         						provider 	=	{offer.provider} 
-//         						food 		=	{offer.food} 
-// 					  			address 	= 	{offer.address}
-// 					  			when 		= 	{offer.when} /> );
-//         		})}
-//       		</ol>
-//       	);
-// 	}
-// });
+OfferSidebar = React.createClass({displayName: "OfferSidebar",
+	render: function() {
+		return (
+			React.createElement("ol", null, 
+		        this.props.offers.map(function(offer) {
+        			return (
+        				React.createElement(Offer, {key: offer._id, 
+        						id: offer._id, 
+        						provider: offer.provider, 
+        						food: offer.food, 
+					  			address: offer.address, 
+					  			when: offer.when}) );
+        		})
+      		)
+      	);
+	}
+});
 
-// Offer = React.createClass({
-//     handleClick: function() {
-//     	claim_offer(this.props.id);
-//     },
-//     render: function() {
-//         return (
-//             <li className="offer">
-//             	<div onClick={this.handleClick}>
-//             		<p> Provider: {this.props.provider}</p>
-//             		<p> Food: {this.props.food}</p>
-//             		<p> Address: {this.props.address}</p>
-//             		<p> When: {this.props.when}</p>
-//             	</div>
-//             </li>
-//         );
-//     }
-// });
+Offer = React.createClass({displayName: "Offer",
+    handleClick: function() {
+    	claim_offer(this.props.id);
+    },
+    render: function() {
+        return (
+            React.createElement("li", {className: "offer"}, 
+            	React.createElement("div", {onClick: this.handleClick}, 
+            		React.createElement("p", null, " Provider: ", this.props.provider), 
+            		React.createElement("p", null, " Food: ", this.props.food), 
+            		React.createElement("p", null, " Address: ", this.props.address), 
+            		React.createElement("p", null, " When: ", this.props.when)
+            	)
+            )
+        );
+    }
+});
+
+/////////////////////////////////////////////////////////////////////////
+// REQUEST CODE HERE
+/////////////////////////////////////////////////////////////////////////
 
 var xhr;  //handles providers' offers
 var xhr2; //handles offers that will be displayed on the home page
 var xhr3; //handles unclaimed offers
+var xhr4;
+
+// loads offers posted by a user that have been claimed
 function load_claimed_offers()
 {
 	xhr = new XMLHttpRequest();
@@ -45,8 +55,9 @@ function load_claimed_offers()
 }
 
 function handle_request() {
+	var url = "https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=true&username=" + sessionStorage.getItem('username');
 	xhr = new XMLHttpRequest();
-	xhr.open("get", "https://c20t3fdb.herokuapp.com/providerOffers?provider=abdi&claimed=true", true); // this is possible because of cross-origin resource sharing (CORS) enabled for web application
+	xhr.open("get", url, true);
 
 	xhr.onreadystatechange = dataReady;
 	xhr.send(null); // Go! Execute!
@@ -55,27 +66,29 @@ function handle_request() {
 function dataReady() {
 	if (xhr.readyState == 4 && xhr.status == 200) {
 		data = JSON.parse(xhr.responseText);
-		for (i = 0; i < data.length; i++) {
-			$("#foodies").append("<p><a>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>");
-			
-		}
+		React.render(
+			React.createElement(OfferSidebar, {offers: data}),
+		  	document.getElementById('foodies')
+		);
 	}
 	else if (xhr.readyState == 4 && xhr.status == 500) {
 		foodies = document.getElementById("foodies");
 		foodies.innerHTML = '<p>Oops! Something went wrong</p>';
-		
 	}
 }
+
 /////////////////////////////////////////////////////////////////////////
 
+// Loads unclaimed offers that can be purchased
 function load_unclaimed_offers() {
 	xhr3 = new XMLHttpRequest();
 	handle_request3();
 }
 
 function handle_request3() {
+	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=false';
 	xhr3 = new XMLHttpRequest();
-	xhr3.open("get", "https://c20t3fdb.herokuapp.com/userOffers", true);
+	xhr3.open("get", url, true);
 
 	xhr3.onreadystatechange = dataReady3;
 	xhr3.send(null); // Go! Execute!
@@ -84,19 +97,11 @@ function handle_request3() {
 function dataReady3() {
 	if (xhr3.readyState == 4 && xhr3.status == 200) {
 		data = JSON.parse(xhr3.responseText);
-		//foodies.innerHTML = scheduleData["line"];
-		for (i = 0; i < data.length; i++) {
-			//console.log("stevenation");
-			// React.render(
-			// 	<OfferSidebar offers={data} />,
-			//   	document.getElementById('claim_me')
-			// );
-// TODO COMMENTED OUT REACT HERE
 
-			// var id = data[i]._id;
-			// // claim_me is the list of unclaimed items for those looking for food
-			// $("#claim_me").append('<p><a id=\"'+id+'\" onclick=claim_offer(\"' + id + '\")>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>');
-		}
+		React.render(
+			React.createElement(OfferSidebar, {offers: data}),
+		  	document.getElementById('claim_me')
+		);
 	}
 	else if (xhr3.readyState == 4 && xhr3.status == 500) {
 		claim_me = document.getElementById("claim_me");
@@ -107,14 +112,16 @@ function dataReady3() {
 
 /////////////////////////////////////////////////////////////////////////
 
+// Loads claimed offers purchased by a user
 function load_offers_claimed_by_user() {
 	xhr2 = new XMLHttpRequest();
 	handle_request2();
 }
 
 function handle_request2() {
+	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=true&username=' + sessionStorage.getItem('username');
 	xhr2 = new XMLHttpRequest();
-	xhr2.open("get", "https://c20t3fdb.herokuapp.com/userOffers?login="+sessionStorage.getItem('username'), true); // this is possible because of cross-origin resource sharing (CORS) enabled for web application
+	xhr2.open("get", url, true);
 
 	xhr2.onreadystatechange = dataReady2;
 	xhr2.send(null); // Go! Execute!
@@ -123,16 +130,46 @@ function handle_request2() {
 function dataReady2() {
 	if (xhr2.readyState == 4 && xhr2.status == 200) {
 		data = JSON.parse(xhr2.responseText);
-		//foodies.innerHTML = scheduleData["line"];
-		for (i = 0; i < data.length; i++) {
-			var id = data[i]._id;
-			// claim_me is the list of unclaimed items for those looking for food
-			$("#claim_me").append("<p><a id="+id+" onclick='claim_offer(" + id + ")'>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>");
-		}
+		React.render(
+			React.createElement(OfferSidebar, {offers: data}),
+		  	document.getElementById('my_claimed_offers_bought')
+		);
 	}
 	else if (xhr2.readyState == 4 && xhr2.status == 500) {
-		foodies = document.getElementById("foodies");
-		foodies.innerHTML = '<p>Oops! Something went wrong</p>';
+		my_claimed_offers_bought = document.getElementById("my_claimed_offers_bought");
+		my_claimed_offers_bought.innerHTML = '<p>Oops! Something went wrong</p>';
+		
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// loads unclaimed offers posted by the user
+function load_claimed_offers_posted_by_user() {
+	xhr2 = new XMLHttpRequest();
+	handle_request4();
+}
+
+function handle_request4() {
+	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=false&username=' + sessionStorage.getItem('username');
+	xhr2 = new XMLHttpRequest();
+	xhr2.open("get", url, true);
+
+	xhr2.onreadystatechange = dataReady2;
+	xhr2.send(null); // Go! Execute!
+}
+
+function dataReady4() {
+	if (xhr2.readyState == 4 && xhr2.status == 200) {
+		data = JSON.parse(xhr2.responseText);
+		React.render(
+			React.createElement(OfferSidebar, {offers: data}),
+		  	document.getElementById('my_unclaimed_offers')
+		);
+	}
+	else if (xhr2.readyState == 4 && xhr2.status == 500) {
+		my_unclaimed_offers = document.getElementById("my_unclaimed_offers");
+		my_unclaimed_offers.innerHTML = '<p>Oops! Something went wrong</p>';
 		
 	}
 }

@@ -8,15 +8,9 @@ var login_init = function() {
 	var params = "username=" + document.getElementById("login_username").value + "&password=" + document.getElementById("login_password").value;
     var username = document.getElementById("login_username").value;
 
-	doRequest('POST', url, params);
-	/*data = JSON.parse(result);*/
-    sessionStorage.setItem('username', username);	
-};
-
-var doRequest = function(method, url, params) {
     var req = new XMLHttpRequest();
 
-    req.open(method, url, true);
+    req.open('POST', url, true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     console.log("Wagwan");
     req.onreadystatechange = function() {
@@ -26,4 +20,6 @@ var doRequest = function(method, url, params) {
         }
     };
     req.send(params);
+	/*data = JSON.parse(result);*/
+    sessionStorage.setItem('username', username);	
 };
