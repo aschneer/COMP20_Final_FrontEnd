@@ -5,7 +5,7 @@ OfferSidebar = React.createClass({
 			<ol>
 		        {this.props.offers.map(function(offer) {
         			return (
-        				<Offer  key 		=	{offer.provider + offer.food + offer.address + offer.when}
+        				<Offer  key 		=	{offer._id}
         						provider 	=	{offer.provider} 
         						food 		=	{offer.food} 
 					  			address 	= 	{offer.address}
@@ -35,7 +35,5 @@ Offer = React.createClass({
 
 React.render(
 	<OfferSidebar offers={data} />,
-  	// < Offer provider={test.provider} food={test.food} 
-  	// 		address={test.address} when={test.when}/>,
   	document.getElementById('example')
 );

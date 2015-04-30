@@ -5,8 +5,8 @@ Pick 5:
 - Geolocation
 - Server-side persistence
 - React/Bootstrap
-
 - Client-side persistence
+
 - send emails
 
 Client Side:
@@ -19,11 +19,6 @@ Server Side:
     - /
         - offers
         - claimed
-        - signups
-    - signUp
-        - implement
-    - signIn
-        - implement
     - test claim offer stuff
 - sorting?
 

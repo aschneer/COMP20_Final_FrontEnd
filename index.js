@@ -49,6 +49,7 @@ function dataReady3() {
 		data = JSON.parse(xhr3.responseText);
 		//foodies.innerHTML = scheduleData["line"];
 		for (i = 0; i < data.length; i++) {
+			
 			var id = data[i]._id;
 			// claim_me is the list of unclaimed items for those looking for food
 			$("#claim_me").append('<p><a id=\"'+id+'\" onclick=claim_offer(\"' + id + '\")>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>');
