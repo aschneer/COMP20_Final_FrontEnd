@@ -11,10 +11,7 @@ var submit_init = function() {
     doRequest('POST', url, params);
     data = JSON.parse(result);
     $('#response').append(data);
-<<<<<<< HEAD
     console.log(data);
-=======
->>>>>>> 5228ab36c692b819d41ce12e5ef3452c1717c6a8
 };
 
 var doRequest = function(method, url, params) {

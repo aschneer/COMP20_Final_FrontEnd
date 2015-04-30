@@ -1,16 +1,16 @@
 $(document).ready(function(){
-	$("#submit").click(login_init);
+	$("#login").click(login_init);
 });
 
 var login_init = function() {
 	//var url = "http://localhost:5000/sendOffer";
 	var url = "https://c20t3fdb.herokuapp.com/signIn";
-	var params = "username=" + document.getElementById("username").value + "&password=" + document.getElementById("password").value;
-    var username = document.getElementById("username").value;
+	var params = "username=" + document.getElementById("login_username").value + "&password=" + document.getElementById("login_password").value;
+    var username = document.getElementById("login_username").value;
 
 	doRequest('POST', url, params);
-	data = JSON.parse(result);
-    sessionStorage.setItem('username', username);	
+	//data = JSON.parse(result);
+    //sessionStorage.setItem('username', username);	
 };
 
 var doRequest = function(method, url, params) {
@@ -18,10 +18,11 @@ var doRequest = function(method, url, params) {
 
     req.open(method, url, true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    console.log("Wagwan");
     req.onreadystatechange = function() {
-        if (req.readyState < 4) {
-        } else if (req.readyState == 4 && req.status == 200) {
-            return req.responseText;
+        if (req.readyState == 4 && req.status == 200) {
+            // SHOULD CALL REUPDATED SOMETHING ELSE
+            console.log('worked yo.');
         }
     };
     req.send(params);
