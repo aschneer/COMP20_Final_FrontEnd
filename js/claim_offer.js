@@ -1,14 +1,12 @@
 var claim_offer = function(offer_id) {
 	//var url = "http://localhost:5000/sendOffer";
-    console.log(offer_id);
+    console.log('testing testing', offer_id);
 	var url = "https://c20t3fdb.herokuapp.com/claimOffer";
     var login = sessionStorage.getItem('username');
-	var params = "id="+offer_id+"&login=" + login;
-
-
+	var params = "_id="+offer_id+"&login=" + login;
 
 	doRequest('POST', url, params);
-        location.reload(); //to reload everything from the server so only unclaimed offers can be shown
+    location.reload(); //to reload everything from the server so only unclaimed offers can be shown
 
 };
 

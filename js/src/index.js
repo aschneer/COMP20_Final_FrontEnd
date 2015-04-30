@@ -1,3 +1,40 @@
+OfferSidebar = React.createClass({
+
+	render: function() {
+		return (
+			<ol>
+		        {this.props.offers.map(function(offer) {
+        			return (
+        				<Offer  key 		=	{offer._id}
+        						id 			= 	{offer._id}
+        						provider 	=	{offer.provider} 
+        						food 		=	{offer.food} 
+					  			address 	= 	{offer.address}
+					  			when 		= 	{offer.when} /> );
+        		})}
+      		</ol>
+      	);
+	}
+});
+
+Offer = React.createClass({
+    handleClick: function() {
+    	claim_offer(this.props.id);
+    },
+    render: function() {
+        return (
+            <li className="offer">
+            	<div onClick={this.handleClick}>
+            		<p> Provider: {this.props.provider}</p>
+            		<p> Food: {this.props.food}</p>
+            		<p> Address: {this.props.address}</p>
+            		<p> When: {this.props.when}</p>
+            	</div>
+            </li>
+        );
+    }
+});
+
 var xhr;  //handles providers' offers
 var xhr2; //handles offers that will be displayed on the home page
 var xhr3; //handles unclaimed offers
@@ -49,10 +86,15 @@ function dataReady3() {
 		data = JSON.parse(xhr3.responseText);
 		//foodies.innerHTML = scheduleData["line"];
 		for (i = 0; i < data.length; i++) {
-			
-			var id = data[i]._id;
-			// claim_me is the list of unclaimed items for those looking for food
-			$("#claim_me").append('<p><a id=\"'+id+'\" onclick=claim_offer(\"' + id + '\")>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>');
+			console.log("stevenation");
+			React.render(
+				<OfferSidebar offers={data} />,
+			  	document.getElementById('claim_me')
+			);
+
+			// var id = data[i]._id;
+			// // claim_me is the list of unclaimed items for those looking for food
+			// $("#claim_me").append('<p><a id=\"'+id+'\" onclick=claim_offer(\"' + id + '\")>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>');
 		}
 	}
 	else if (xhr3.readyState == 4 && xhr3.status == 500) {
