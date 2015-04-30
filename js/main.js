@@ -28,7 +28,7 @@ var listings = [];
 // Add marker to the map and
 // store its information in the
 // global "listings" array.
-function addListing(lat,lng,address,restaurant,description,endTime,price)
+function addListing(lat,lng,address,restaurant,description,when)
 {
 	var newIndex = listings.length;
 	var markerOptions = {
@@ -38,7 +38,7 @@ function addListing(lat,lng,address,restaurant,description,endTime,price)
 		visible: true
 	};
 	var newMarker = new google.maps.Marker(markerOptions);
-	var infoWindowContent = "test";
+	var infoWindowContent = "Address: "+address+", Restaurant: " + restaurant + ", Description: " + description + ", When: " + when + "";
 	var newInfoWindow = new google.maps.InfoWindow({
 			content: infoWindowContent
 	});
@@ -54,10 +54,10 @@ function addListing(lat,lng,address,restaurant,description,endTime,price)
 		address: address,
 		restaurant: restaurant,
 		description: description,
-		endTime: endTime,
-		price: price
+		when: when
 	};
 	listings.push(newListing);
+
 }
 
 // Delete a marker from the map
@@ -85,15 +85,64 @@ function showMarker(index)
 	listings[index].marker.setVisible(true);
 }
 
-// Function to update the site
-// in real time with the status
-// of food items, the ETA time
-// until food is ready, and the
-// colors of markers on the map.
-function updateListings()
-{
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//this now gets a longitude and latitude from the address we got from the server
+//the parameter data_to_plot is an object
+function get_lat_lng(data_to_plot)
+{
+	req_map = new XMLHttpRequest();
+	//address_to_plot = data_to_plot[i].address;
+	//all_other_info = data_to_plot;
+	//req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address="+address_to_plot+"");
+				console.log("Shit's gonna work 111");
+
+	req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address=303+Boston+Ave,+Medford,+MA", true);
+	req_map.onreadystatechange = lat_lng_ready;
+	req_map.send();
 }
+
+function lat_lng_ready() {
+	if (req_map.readyState == 4 && req_map.status == 200) {
+			console.log("Shit's gonna work 22");
+
+		lat_lng_data = JSON.parse(req_map.responseText);
+		console.log(lat_lng_data);
+		//addListing(lat_lng_data[1].geometry["location"].lat,lat_lng_data[1].geometry["location"].lng,address_to_plot,all_other_info.provider,all_other_info.food,all_other_info.when);
+		addListing(lat_lng_data.results[0].geometry.location.lat,lat_lng_data.results[0].geometry["location"].lng,"303 Boston Ave","Helen's","burger","1200h");
+} else if (req_map.readyState == 4 && req_map.status == 500) {
+		console.log("invalid address. that's messed up.")
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+//this gets the addresses from the server
+function load_offers() {
+	req = new XMLHttpRequest();
+	
+	req.open("get", "https://c20t3fdb.herokuapp.com/userOffers", true);
+
+	req.onreadystatechange = dataReady;
+}
+
+function dataReady() {
+	console.log("Shit's gonna work");
+	if (req.readyState == 4 && req.status == 200) {
+		data = JSON.parse(req.responseText);
+		for (i = 0; i < data.length; i++) {			
+			get_lat_lng(data[i]);	
+		}
+	}
+	else if (req.readyState == 4 && req.status == 500) {
+		map = document.getElementById("map-canvas");
+		map.innerHTML = '<p>Oops! Something went wrong</p>';
+		
+	}
+}
+
+
 
 // Initial function runs when HTML body loads.
 function init()
@@ -107,12 +156,16 @@ function init()
 	// Create the map object.  This is global.
 	map = new google.maps.Map(document.getElementById('map-canvas'),
 		 	mapOptions);
+
+	//load_offers();
+	get_lat_lng("absadf");
+
 	// Load all food items onto map.
 		// READ FROM DATABASE.
 		// FOR EACH ITEM, CREATE MARKER.
 	// Account for time zone here...
-	var endTimeTemp = new Date(2015,3,30,19,30,0,0);
-	addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza",endTimeTemp,14.73);
+	//var endTimeTemp = new Date(2015,3,30,19,30,0,0);
+	//addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza",endTimeTemp);
 	//console.log(listings);
 }
 

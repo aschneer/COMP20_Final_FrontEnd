@@ -5,8 +5,12 @@ $(document).ready(function(){
 var submit_init = function() {
     //var url = "http://localhost:5000/sendOffer";
     var url = "https://c20t3fdb.herokuapp.com/sendOffer";
-    var params = "provider=" + document.getElementById("provider").value + "&food=" + document.getElementById("food").value + 
-                "&address=" + document.getElementById("address").value + "&when=" + document.getElementById("when").value;
+    street = document.getElementById("street").value;
+    zipcode = document.getElementById("zipcode").value;
+    city = document.getElementById("city").value;
+    state = document.getElementById("state").value;
+    params = "provider=" + document.getElementById("provider").value + "&food=" + document.getElementById("food").value + 
+                "&address=" + street + " " + zipcode + " " + city+" " + state + "&when=" + document.getElementById("when").value;
 
     doRequest('POST', url, params);
     /*data = JSON.parse(result);

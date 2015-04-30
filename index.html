@@ -8,8 +8,8 @@
     <meta name="author" content="Andrew Schneer, Sibonay Koo, Barry Maswan, Hunter Wapman"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
 
-    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -31,7 +31,7 @@
     <script src="./js/claim_offer.js"></script>
 
     <script src="./js/build/react.js"></script>
-    <script src="./js/build/index.js"></script>
+    <script src="./js/src/index.js"></script>
   </head>
 
   <body onload="init()">
@@ -70,7 +70,10 @@
                 <form role="form">
                   <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="name" class="form-control" id="address" placeholder="Enter address">
+                    <input type="name" class="form-control" id="street" placeholder="Enter street">
+                    <input type="name" class="form-control" id="zip_code" placeholder="Enter zip_code">
+                    <input type="name" class="form-control" id="city" placeholder="Enter city">
+                    <input type="name" class="form-control" id="state" placeholder="Enter state">
                   </div>
 
                   <div class="form-group">
@@ -145,14 +148,14 @@
           </div>
 
 
-          <div class="col-xs-4 col" id="right-to-bottom">
+          <div class="col-xs-4 col" class="right-to-bottom">
             <div id="customer_div">
             <ul>
-              <li id="whats_available_button" ><a href="#">WHAT'S AVAILABLE?</a></li>
+              <li id="whats_available_button" class="div_title"><button class="btn_style">WHAT'S AVAILABLE?</button></li>
               <li></li>
               <li>| </li>
               <li> </li>
-              <li id="claimed_offers_button"><a href="#">CLAIMED OFFERS</a></li>
+              <li id="claimed_offers_button"><button class="btn_style">CLAIMED OFFERS</button></li>
             </ul>
           
                 <!-- item list -->
@@ -171,25 +174,25 @@
           </div>
 
 
-          <div class="col-xs-4 col" id="right-to-bottom">
+          <div class="col-xs-4 col" class="right-to-bottom">
             <div id="restaurant_div">
             <ul>
-              <li id="whats_available_button"><a href="#">My offers</a></li>
-              <li id="claimed_offers_button"><a href="#">Claimed from me</a></li>
+              <li id="restaurant_offers_button" class="div_title"><a href="#">My offers</a></li>
+              <li id="claimed_from_restaurant_button"><a href="#">Claimed from me</a></li>
             </ul>
           
                 <!-- item list -->
-                <div class="panel panel-default" id="available_items">
+                <div class="panel panel-default" id="restaurant_available_items">
                     <ul>
                       <li id = "food_items">Food</li>
                     </ul>
                 </div>
 
-                <div class="panel panel-default" id="claimed_offers">
+                <div class="panel panel-default" id="restaurant_claimed_offers">
                     <ul>
                       <li id = "food_items">Claimed</li>
                     </ul>
-                    <p id="foodies"></p>
+                    <p id="foodies">blabla</p> 
                 </div>
 
               </div>

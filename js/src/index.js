@@ -1,39 +1,39 @@
-OfferSidebar = React.createClass({
+// OfferSidebar = React.createClass({
 
-	render: function() {
-		return (
-			<ol>
-		        {this.props.offers.map(function(offer) {
-        			return (
-        				<Offer  key 		=	{offer._id}
-        						id 			= 	{offer._id}
-        						provider 	=	{offer.provider} 
-        						food 		=	{offer.food} 
-					  			address 	= 	{offer.address}
-					  			when 		= 	{offer.when} /> );
-        		})}
-      		</ol>
-      	);
-	}
-});
+// 	render: function() {
+// 		return (
+// 			<ol>
+// 		        {this.props.offers.map(function(offer) {
+//         			return (
+//         				<Offer  key 		=	{offer._id}
+//         						id 			= 	{offer._id}
+//         						provider 	=	{offer.provider} 
+//         						food 		=	{offer.food} 
+// 					  			address 	= 	{offer.address}
+// 					  			when 		= 	{offer.when} /> );
+//         		})}
+//       		</ol>
+//       	);
+// 	}
+// });
 
-Offer = React.createClass({
-    handleClick: function() {
-    	claim_offer(this.props.id);
-    },
-    render: function() {
-        return (
-            <li className="offer">
-            	<div onClick={this.handleClick}>
-            		<p> Provider: {this.props.provider}</p>
-            		<p> Food: {this.props.food}</p>
-            		<p> Address: {this.props.address}</p>
-            		<p> When: {this.props.when}</p>
-            	</div>
-            </li>
-        );
-    }
-});
+// Offer = React.createClass({
+//     handleClick: function() {
+//     	claim_offer(this.props.id);
+//     },
+//     render: function() {
+//         return (
+//             <li className="offer">
+//             	<div onClick={this.handleClick}>
+//             		<p> Provider: {this.props.provider}</p>
+//             		<p> Food: {this.props.food}</p>
+//             		<p> Address: {this.props.address}</p>
+//             		<p> When: {this.props.when}</p>
+//             	</div>
+//             </li>
+//         );
+//     }
+// });
 
 var xhr;  //handles providers' offers
 var xhr2; //handles offers that will be displayed on the home page
@@ -86,11 +86,12 @@ function dataReady3() {
 		data = JSON.parse(xhr3.responseText);
 		//foodies.innerHTML = scheduleData["line"];
 		for (i = 0; i < data.length; i++) {
-			console.log("stevenation");
-			React.render(
-				<OfferSidebar offers={data} />,
-			  	document.getElementById('claim_me')
-			);
+			//console.log("stevenation");
+			// React.render(
+			// 	<OfferSidebar offers={data} />,
+			//   	document.getElementById('claim_me')
+			// );
+// TODO COMMENTED OUT REACT HERE
 
 			// var id = data[i]._id;
 			// // claim_me is the list of unclaimed items for those looking for food
@@ -145,6 +146,9 @@ $(document).ready(function () {
 	$("#restaurant_div").hide();
 	$("#login_form").hide();
 	$("#signup_form").hide();
+	$("#restaurant_claimed_offers").hide();
+	$("#restaurant_available_items").hide();
+
 		if (sessionStorage.length == 0){
 			$("#logout_navbar").hide();
 			$("#username_navbar").hide();
@@ -155,10 +159,14 @@ $(document).ready(function () {
 		}
 
 	$("#submit_offer_button").click(function(){
+			console.log("submit offer click");
+
 			$("#map-canvas").hide();
 			$("#submit_offer_form").show();
 			$("#customer_div").hide();
 			$("#restaurant_div").show();
+			$("#restaurant_claimed_offers").hide();
+			$("#restaurant_available_items").show();
 
 			$("#login_form").hide();
 			$("#signup_form").hide();
@@ -185,7 +193,20 @@ $(document).ready(function () {
 			$("#claimed_offers").show();
 	});
 
+	$("#restaurant_offers_button").click(function(){
+			console.log("restaurant offers click");
+			$("#restaurant_claimed_offers").hide();
+			$("#restaurant_available_items").show();
+	});
+
+	$("#claimed_from_restaurant_button").click(function(){
+			console.log("restaurant offers claimed click");
+			$("#restaurant_available_items").hide();
+			$("#restaurant_claimed_offers").show();
+	});
+
 	$("#login_button").click(function(){
+			console.log("login button clicked");
 			$("#map-canvas").hide();
 			$("#login_form").show();
 			$("#signup_form").hide();

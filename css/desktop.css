@@ -4,17 +4,6 @@
 @media screen and (min-device-width: 769px) {
 
 
-	/*
-	A custom Bootstrap 3.1 theme from http://bootply.com\
-
-	This CSS code should follow the 'bootstrap.css'
-	in your HTML file.
-
-	license: MIT
-	author: bootply.com
-	*/
-
-
 	html,body{
 	  	height:100%;
 	}
@@ -39,6 +28,13 @@
 	    margin: 5;
 	}
 	
+	.offer {
+		font-family: Comic;
+	}
+
+	.whats_available_button, .claimed_offers_button, .restaurant_offers_button, .claimed_from_restaurant_button {
+
+	}
 
 	.navbar-custom .icon-bar {
 		background-color:#fff;
@@ -76,7 +72,7 @@
 	    overflow-y:scroll;
 	}
 
-	#right-to-bottom {
+	.right-to-bottom {
 		height:100%;
 		display: inline-block;
 	}
@@ -102,6 +98,29 @@
 	#customer_div, #customer_claimed {
 		position: relative;
 		top: 10px;
+	}
+
+	.btn_style {
+		font:15px Calibri, Arial, sans-serif;
+
+		    /* A semi-transparent text shadow */
+		    text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+
+		    /* Overriding the default underline styling of the links */
+		    text-decoration:none !important;
+		    white-space:nowrap;
+
+		    display:inline-block;
+		    vertical-align:baseline;
+		    position:relative;
+		    cursor:pointer;
+		    padding:10px 20px;
+		    color:#0f4b6d !important;
+
+		    border:1px solid #84acc3 !important;
+
+		    /* A fallback background color */
+		    background-color: #48b5f2;
 	}
 
 
