@@ -1,16 +1,12 @@
-$(document).ready(function(){
-	$("#login").click(login_init);
-});
-
-var login_init = function() {
+var claim_offer = function(offer_id) {
 	//var url = "http://localhost:5000/sendOffer";
-	var url = "https://c20t3fdb.herokuapp.com/signIn";
-	var params = "username=" + document.getElementById("login_username").value + "&password=" + document.getElementById("login_password").value;
-    var username = document.getElementById("login_username").value;
+    console.log(offer_id);
+	var url = "https://c20t3fdb.herokuapp.com/claimOffer";
+    var login = sessionStorage.getItem('username');
+	var params = "id="+offer_id+"&login=" + login;
+
 
 	doRequest('POST', url, params);
-	/*data = JSON.parse(result);*/
-    sessionStorage.setItem('username', username);	
 };
 
 var doRequest = function(method, url, params) {
@@ -18,7 +14,6 @@ var doRequest = function(method, url, params) {
 
     req.open(method, url, true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    console.log("Wagwan");
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             // SHOULD CALL REUPDATED SOMETHING ELSE

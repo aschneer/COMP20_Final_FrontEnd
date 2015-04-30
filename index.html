@@ -30,6 +30,7 @@
     <script src="login.js"></script>
     <script src="submit_offer.js"></script>
     <script src="signup.js"></script>
+    <script src="claim_offer.js"></script>
 
 
     <style>
@@ -58,7 +59,7 @@
           <li class="active" id="submit_offer_button"><a href="#">Submit an offer</a></li>
           <li class="active" id="login_button"><a href="#">Login/Sign up</a></li>
           <li class="active" id="username_navbar"></li>
-          <li class="active" id="logout_navbar">Logout</li>
+          <li class="active" id="logout_navbar"><a href="#">Logout</li>
 
           <li>&nbsp;</li>
          </ul>
@@ -164,6 +165,7 @@
                     <ul>
                       <li id = "food_items">Food</li>
                     </ul>
+                    <p id="claim_me"></p>
                 </div>
 
                 <div class="panel panel-default" id="claimed_offers">
@@ -212,6 +214,7 @@
     $("#home_button").click(function() {
       init();
     });
+    
   });
   </script>
     <!-- <script src="js/data.js"></script>

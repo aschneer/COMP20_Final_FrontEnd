@@ -9,8 +9,8 @@ var signup_init = function() {
 				"&email=" + document.getElementById("email").value + "&phone=" + document.getElementById("phone").value
                 + "&password=" + document.getElementById("signup_password").value;
 	doRequest('POST', url, params);
-	data = JSON.parse(result);
-    console.log(data);	
+	/*data = JSON.parse(result);
+    console.log(data);*/	
 };
 
 var doRequest = function(method, url, params) {

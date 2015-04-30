@@ -9,9 +9,9 @@ var submit_init = function() {
                 "&address=" + document.getElementById("address").value + "&when=" + document.getElementById("when").value;
 
     doRequest('POST', url, params);
-    data = JSON.parse(result);
+    /*data = JSON.parse(result);
     $('#response').append(data);
-    console.log(data);
+    console.log(data);*/
 };
 
 var doRequest = function(method, url, params) {
