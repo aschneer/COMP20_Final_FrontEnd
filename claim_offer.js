@@ -6,7 +6,10 @@ var claim_offer = function(offer_id) {
 	var params = "id="+offer_id+"&login=" + login;
 
 
+
 	doRequest('POST', url, params);
+        location.reload(); //to reload everything from the server so only unclaimed offers can be shown
+
 };
 
 var doRequest = function(method, url, params) {

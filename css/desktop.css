@@ -97,6 +97,11 @@
 
 	#food_items{
 		margin: 10;
+	} 
+
+	#customer_div, #customer_claimed {
+		position: relative;
+		top: 10px;
 	}
 
 

@@ -9,6 +9,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
 
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,6 +37,14 @@
     <style>
     #show_me_food_button{
       font-family: 'Shadows Into Light Two', cursive;
+    }
+
+  
+    .sexyashell{
+      font-family: 'PT Sans Narrow', sans-serif;
+      color: black;
+      font-size: 20px;
+      text-decoration: none;
     }
 
     </style>
@@ -156,22 +165,23 @@
           <div class="col-xs-4 col" id="right-to-bottom">
             <div id="customer_div">
             <ul>
-              <li id="whats_available_button" ><font size="4"><a href="#">What's available?</a></font></li>
-              <li id="claimed_offers_button"><a href="#">Claimed offers</a></li>
+              <li id="whats_available_button" ><a href="#">WHAT'S AVAILABLE?</a></li>
+              <li></li>
+              <li>| </li>
+              <li> </li>
+              <li id="claimed_offers_button"><a href="#">CLAIMED OFFERS</a></li>
             </ul>
           
                 <!-- item list -->
                 <div class="panel panel-default" id="available_items">
-                    <ul>
-                      <li id = "food_items">Food</li>
-                    </ul>
-                    <p id="claim_me"></p>
+                    <p id="claim_me" class="sexyashell"></p>
                 </div>
 
                 <div class="panel panel-default" id="claimed_offers">
                     <ul>
                       <li id = "food_items">Claimed</li>
                     </ul>
+                    <p id="customer_claimed"></p>
                 </div>
               </div>
 

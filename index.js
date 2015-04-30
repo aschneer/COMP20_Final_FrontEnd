@@ -51,7 +51,7 @@ function dataReady3() {
 		for (i = 0; i < data.length; i++) {
 			var id = data[i]._id;
 			// claim_me is the list of unclaimed items for those looking for food
-			$("#claim_me").append("<p><a id="+id+" onclick='claim_offer(" + id + ")'>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>");
+			$("#claim_me").append('<p><a id=\"'+id+'\" onclick=claim_offer(\"' + id + '\")>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>');
 		}
 	}
 	else if (xhr3.readyState == 4 && xhr3.status == 500) {
@@ -82,8 +82,6 @@ function dataReady2() {
 		//foodies.innerHTML = scheduleData["line"];
 		for (i = 0; i < data.length; i++) {
 			var id = data[i]._id;
-			// foodies refers to the list that the restaurants have of their unclaimed food
-			$("#foodies").append("<p><a id="+id+">Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>");
 			// claim_me is the list of unclaimed items for those looking for food
 			$("#claim_me").append("<p><a id="+id+" onclick='claim_offer(" + id + ")'>Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</a></p>");
 		}
