@@ -4,8 +4,6 @@ function load_offers()
 	xhr = new XMLHttpRequest();
 	handle_request();
 }
-
-
 		function handle_request() {
 			xhr = new XMLHttpRequest();
 			xhr.open("get", "https://c20t3fdb.herokuapp.com/providerOffers?provider=abdi&claimed=false", true); // this is possible because of cross-origin resource sharing (CORS) enabled for web application
@@ -16,13 +14,15 @@ function load_offers()
 
 		function dataReady() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				 = JSON.parse(xhr.responseText);
-				scheduleDom = document.getElementById("schedule");
-				scheduleDom.innerHTML = scheduleData["line"];
+				data = JSON.parse(xhr.responseText);
+				//foodies.innerHTML = scheduleData["line"];
+				for (i = 0; i < data.length; i++) {
+					$("#foodies").append("<p> Provider: " + data[i].provider + " Food: " + data[i].food + " Address: " + data[i].address + " Ready At " + data[i].when + " Quantity " + data[i].quantity + "</p>"); 
+				}
 			}
 			else if (xhr.readyState == 4 && xhr.status == 500) {
-				scheduleDom = document.getElementById("schedule");
-				scheduleDom.innerHTML = '<p><img src="http://www.yiyinglu.com/failwhale/images/Homer_the_New_Fail_Whale_by_edwheeler.jpg" alt="fail" /></p>';
+				foodies = document.getElementById("foodies");
+				foodies.innerHTML = '<p>Oops! Something went wrong</p>';
 				
 			}
 		}
