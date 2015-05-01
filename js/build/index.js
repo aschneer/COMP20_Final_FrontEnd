@@ -50,7 +50,7 @@ var xhr4 = new XMLHttpRequest(); //handles unclaimed offers posted by the user
 
 // loads offers posted by a user that have been claimed
 function load_sellmode_claimed() {
-	var url = "https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=true&username=" + sessionStorage.getItem('username');
+	var url = "https://c20t3server.herokuapp.com/offers?mode=sell&claimed=true&username=" + sessionStorage.getItem('username');
 	xhr1.open("get", url, true);
 
 	xhr1.onreadystatechange = dataReady_sellmode_claimed;
@@ -75,7 +75,7 @@ function dataReady_sellmode_claimed() {
 
 // Loads unclaimed offers that can be purchased
 function load_buymode_unclaimed() {
-	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=false';
+	var url = 'https://c20t3server.herokuapp.com/offers?mode=buy&claimed=false';
 	xhr3.open("get", url, true);
 
 	xhr3.onreadystatechange = dataReady_buymode_unclaimed;
@@ -102,7 +102,7 @@ function dataReady_buymode_unclaimed() {
 
 // Loads claimed offers purchased by a user
 function load_buymode_claimed() {
-	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=true&username=' + sessionStorage.getItem('username');
+	var url = 'https://c20t3server.herokuapp.com/offers?mode=buy&claimed=true&username=' + sessionStorage.getItem('username');
 	xhr2.open("get", url, true);
 
 	xhr2.onreadystatechange = dataReady_buymode_claimed;
@@ -128,7 +128,7 @@ function dataReady_buymode_claimed() {
 
 // loads unclaimed offers posted by the user
 function load_sellmode_unclaimed() {
-	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=false&username=' + sessionStorage.getItem('username');
+	var url = 'https://c20t3server.herokuapp.com/offers?mode=sell&claimed=false&username=' + sessionStorage.getItem('username');
 	xhr4.open("get", url, true);
 
 	xhr4.onreadystatechange = dataReady_sellmode_unclaimed;
@@ -154,7 +154,7 @@ function dataReady_sellmode_unclaimed() {
 
 $(document).ready(function () {
 	load_buymode_unclaimed();
-	//map_update(); TODO
+	init();
 	$("#submit_offer_form").hide();
 	$("#claimed_offers").hide();
 	$("#restaurant_div").hide();

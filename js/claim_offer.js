@@ -1,6 +1,6 @@
 var claim_offer = function(offer_id) {
 	//var url = "http://localhost:5000/sendOffer";
-	var url = "https://c20t3fdb.herokuapp.com/claimOffer";
+	var url = "https://c20t3server.herokuapp.com/claimOffer";
     var username = sessionStorage.getItem('username');
 	var params = "_id="+offer_id+"&buyer=" + username;
 

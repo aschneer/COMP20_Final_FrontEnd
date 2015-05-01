@@ -3,7 +3,7 @@ $(document).ready(function(){
 });
 
 var submit_init = function() {
-	url = "https://c20t3fdb.herokuapp.com/sendOffer";
+	url = "https://c20t3server.herokuapp.com/sendOffer";
 	street = document.getElementById("street").value;
 	street_number = document.getElementById("street_number").value;
 	city = document.getElementById("city").value;
@@ -12,7 +12,7 @@ var submit_init = function() {
 
 	// Use Google Maps Geocoding library to
 	// validate address of food being posted.
-	address = street_number + "+" + street + ",+" + city + ",+" + state + "+" zipcode;
+	address = street_number + "+" + street + ",+" + city + ",+" + state + "+" + zipcode;
 	console.log(address);
 	// Call function from map.js.
 	validate_address(address);

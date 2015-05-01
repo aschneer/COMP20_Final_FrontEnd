@@ -147,23 +147,29 @@ function validate_address_ready() {
 
 function map_update()
 {
+	console.log("in map update");
 	// empty listings array and clear markers from google map
 	for (var i = 0; i < listings.length; i++) {
 		deleteListing(i);
 	}
+	console.log(listings);
 	req = new XMLHttpRequest();
-	req.open("get", "https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=false", true);
+	req.open("get", "https://c20t3server.herokuapp.com/offers?mode=buy&claimed=false", true);
 	req.onreadystatechange = dataReady;
+	req.send();
 }
 
 
 function dataReady() {
-	console.log("offers came in from database");
 	if (req.readyState == 4 && req.status == 200) {
+			console.log("offers came in from database");
+
 		data = JSON.parse(req.responseText);
 		for (i = 0; i < data.length; i++) {
 			addListing(data[i].lat, data[i].lng, data[i].address, data[i].seller, data[i].food, data[i].when, data[i].quantity, data[i].price);
 		}
+			console.log(listings);
+
 	}
 	// TODO: if failed req, display map with no markers
 	// else if (req.readyState == 4 && req.status == 500) {
@@ -187,6 +193,10 @@ function init()
 	// Create the map object.  This is global.
 	map = new google.maps.Map(document.getElementById('map-canvas'),
 		 	mapOptions);
+
+	console.log("before map update");
+	map_update(); 
+
 
 	//load_offers();
 	//get_lat_lng("absadf");
