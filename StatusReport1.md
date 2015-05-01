@@ -31,3 +31,7 @@ We started working on our project before break and split the tasks up into three
     - homepage:
         - display offers from server
         - responsive to mobile screen sizes
+
+#Comments by Ming
+* Where are you getting restaurant data from?
+* Have you tackled and/or identified the most challenging part of the project yet?
