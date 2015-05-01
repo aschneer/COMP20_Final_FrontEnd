@@ -10,7 +10,8 @@ OfferSidebar = React.createClass({displayName: "OfferSidebar",
         			return (
         				React.createElement(Offer, {key: offer._id, 
         						id: offer._id, 
-        						provider: offer.provider, 
+        						username: offer.username, 
+        						price: offer.price, 
         						food: offer.food, 
 					  			address: offer.address, 
 					  			when: offer.when}) );
@@ -26,12 +27,13 @@ Offer = React.createClass({displayName: "Offer",
     },
     render: function() {
         return (
-            React.createElement("li", {className: "offer"}, 
-            	React.createElement("div", {onClick: this.handleClick}, 
-            		React.createElement("p", null, " Provider: ", this.props.provider), 
-            		React.createElement("p", null, " Food: ", this.props.food), 
-            		React.createElement("p", null, " Address: ", this.props.address), 
-            		React.createElement("p", null, " When: ", this.props.when)
+            React.createElement("li", null, 
+            	React.createElement("div", {className: "offer", onClick: this.handleClick}, 
+            		React.createElement("p", {className: "offer-when"}, " When: ", this.props.when), 
+	            	React.createElement("p", {className: "offer-food"}, " Food: ", this.props.food), 
+	            	React.createElement("p", {className: "offer-price"}, " Price: ", this.props.price), 
+            		React.createElement("p", {className: "offer-username"}, " Provider: ", this.props.username), 
+            		React.createElement("p", {className: "offer-address"}, " Address: ", this.props.address)
             	)
             )
         );
