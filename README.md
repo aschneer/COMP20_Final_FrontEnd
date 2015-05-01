@@ -104,15 +104,15 @@ Don’t have to wait for food
 ####Mobile
 ![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/map-mobile.png "Homepage for Mobile")
 
-###Homepage
+###Post
 
 ####Desktop
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-desktop.png "Post Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-desktop.png "Post for Desktop")
 
 ####Mobile
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-mobile.png "Post Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-mobile.png "Post for Mobile")
 
-###Homepage
+###Sign-In
 
 ####Desktop
 ![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/signin-desktop.png "Sign-in Screen for Desktop")
