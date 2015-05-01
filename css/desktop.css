@@ -126,7 +126,7 @@ li {
 	padding-top: 0;
 }
 
-li.offer div {
+div.offer {
 	border-width: 2px;
 	border-color: black;
 	box-shadow: 0px 0px 5px black;
