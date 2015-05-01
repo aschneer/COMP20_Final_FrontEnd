@@ -133,8 +133,8 @@ div.offer {
 	padding: 5px;
 }
 
-li.offer div p{
-
+div.offer:hover, div.offer:active {
+	background-color: #a5d6a7;
 }
 
 #map-canvas {

@@ -62,6 +62,10 @@ function load_sellmode_claimed() {
 function dataReady_sellmode_claimed() {
 	if (xhr1.readyState == 4 && xhr1.status == 200) {
 		data = JSON.parse(xhr1.responseText);
+		for (var i = 0; i < data.length; i++) {
+			data.username = data.buyer;
+			console.log(data.username);
+		}
 		React.render(
 			<OfferSidebar offers={data} />,
 		  	document.getElementById('restaurant_claimed_offers')
@@ -87,7 +91,9 @@ function load_buymode_unclaimed() {
 function dataReady_buymode_unclaimed() {
 	if (xhr3.readyState == 4 && xhr3.status == 200) {
 		data = JSON.parse(xhr3.responseText);
-
+		for (var i = 0; i < data.length; i++) {
+			data.username = data.seller;
+		}
 		React.render(
 			<OfferSidebar offers={data} />,
 		  	document.getElementById('claim_me')
@@ -114,6 +120,9 @@ function load_buymode_claimed() {
 function dataReady_buymode_claimed() {
 	if (xhr2.readyState == 4 && xhr2.status == 200) {
 		data = JSON.parse(xhr2.responseText);
+		for (var i = 0; i < data.length; i++) {
+			data.username = data.seller;
+		}
 		React.render(
 			<OfferSidebar offers={data} />,
 		  	document.getElementById('my_claimed_offers_bought')
@@ -140,6 +149,9 @@ function load_sellmode_unclaimed() {
 function dataReady_sellmode_unclaimed() {
 	if (xhr4.readyState == 4 && xhr4.status == 200) {
 		data = JSON.parse(xhr4.responseText);
+		for (var i = 0; i < data.length; i++) {
+			data.username = data.seller;
+		}
 		React.render(
 			<OfferSidebar offers={data} />,
 		  	document.getElementById('restaurant_available_items')
