@@ -99,26 +99,26 @@ Don’t have to wait for food
 ###Homepage
 
 ####Desktop
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/map-desktop.png "Homepage for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/map-desktop.png "Homepage for Desktop")
 
 ####Mobile
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/map-mobile.png "Homepage for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/map-mobile.png "Homepage for Mobile")
 
 ###Post
 
 ####Desktop
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-desktop.png "Post for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/post-desktop.png "Post for Desktop")
 
 ####Mobile
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-mobile.png "Post for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/post-mobile.png "Post for Mobile")
 
 ###Sign-In
 
 ####Desktop
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/signin-desktop.png "Sign-in Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/signin-desktop.png "Sign-in Screen for Desktop")
 
 ####Mobile
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/signin-mobile.png "Sign-in Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/notes/screenshots/signin-mobile.png "Sign-in Screen for Mobile")
 
 #Comments by Ming (on original submission 2015/03/05)
 1. I love your list of features, your team did it right
