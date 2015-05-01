@@ -171,7 +171,7 @@ $(document).ready(function () {
 		} else {
 			$("#login_button").hide();
 			$("#logout_navbar").show();
-			$("#username_navbar").append(sessionStorage.getItem('username'));
+			$("#username_navbar a").append(sessionStorage.getItem('username'));
 		}
 
 	$("#submit_offer_button").click(function(){

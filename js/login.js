@@ -19,4 +19,7 @@ var login_init = function() {
     };
     req.send(params);
     sessionStorage.setItem('username', username);	
+
+   // $("#buy_button").addClass('active');
+
 };
