@@ -101,7 +101,7 @@ function validate_address(address)
 	//address_to_plot = data_to_plot[i].address;
 	//all_other_info = data_to_plot;
 	//req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address="+address_to_plot+"");
-				console.log("Shit's gonna work 111");
+	console.log("Shit's gonna work 111");
 
 	req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address="+address, true);
 	req_map.onreadystatechange = validate_address_ready;
@@ -158,7 +158,7 @@ function map_update()
 
 
 function dataReady() {
-	console.log("Shit's gonna work");
+	console.log("offers came in from database");
 	if (req.readyState == 4 && req.status == 200) {
 		data = JSON.parse(req.responseText);
 		for (i = 0; i < data.length; i++) {
@@ -189,7 +189,7 @@ function init()
 		 	mapOptions);
 
 	//load_offers();
-	get_lat_lng("absadf");
+	//get_lat_lng("absadf");
 
 	// Load all food items onto map.
 		// READ FROM DATABASE.

@@ -9,7 +9,7 @@ var submit_init = function() {
 	city = document.getElementById("city").value;
 	state = document.getElementById("state").value;
 	zipcode = document.getElementById("zipcode").value;
-	username = sessionStorage.getItem("username");
+
 	// Use Google Maps Geocoding library to
 	// validate address of food being posted.
 	address = street_number + "+" + street + ",+" + city + ",+" + state + "+" zipcode;
@@ -18,18 +18,24 @@ var submit_init = function() {
 	validate_address(address);
 }
 
+// called in map.js
 function send_offer_to_server(validated_address_obj) {
 	if(validated_address_obj.error) {
 		alert("Invalid address.");
 	} else {
-		var params = "seller=" + username + "&food=" + document.getElementById("food").value + 
-					"&address=" + validated_address_obj.address + "&when=" + document.getElementById("when").value;
+		var price = document.getElementById("price").value;
+		var quantity = document.getElementById("quantity").value;
+		var username = sessionStorage.getItem("username");
+		var when = document.getElementById("when").value;
+		var food = document.getElementById("food").value;
+		var params = "seller=" + username + "&food=" + food + "&address=" + validated_address_obj.address 
+					+ "&when=" + when + "&quantity=" + quantity + "&price=" + price + "&lat=" 
+					+ validated_address_obj.lat + "&lng=" + validated_address_obj.lng;
 		var req = new XMLHttpRequest();
 		req.open('POST', url, true);
 		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		req.onreadystatechange = function() {
 			if (req.readyState == 4 && req.status == 200) {
-				// SHOULD CALL REUPDATED SOMETHING ELSE
 				console.log('worked yo.');
 				load_sellmode_unclaimed()
 				map_update();

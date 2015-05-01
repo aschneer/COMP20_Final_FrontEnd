@@ -1,3 +1,6 @@
+
+
+
 @media screen and (min-device-width: 769px) {
 
 
@@ -26,11 +29,6 @@
 	}
 	
 
-	.whats_available_button, .claimed_offers_button, .restaurant_offers_button, .claimed_from_restaurant_button {
-
-	}
-
-
 	.offers_and_claims_navbar {
 	    list-style-type: none;
    		margin: 0;
@@ -57,6 +55,10 @@
 	}
 
 
+	.whats_available_button, .claimed_offers_button, .restaurant_offers_button, .claimed_from_restaurant_button {
+
+	}
+
 	.navbar-custom .icon-bar {
 		background-color:#fff;
 	}
@@ -65,7 +67,6 @@
 		background-color: #FF7373;
 	    color:#fff;
 	    height: 50px;
-	    width: 100%;
 	}
 
 	.navbar-custom li>a:hover,.navbar-custom li>a:focus {
@@ -83,7 +84,6 @@
 		box-shadow: inset 0 0 0;
 	}
 
-
 	.p, h2 {
 		padding-left: 16px;
 	}
@@ -99,10 +99,6 @@
 	.right-to-bottom {
 		height:100%;
 		display: inline-block;
-	}
-
-	.col-xs-4 {
-		padding-right: 0;
 	}
 
 	#map-canvas {
@@ -128,6 +124,28 @@
 		top: 10px;
 	}
 
+	.btn_style {
+		font:15px Calibri, Arial, sans-serif;
+
+		    /* A semi-transparent text shadow */
+		    text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+
+		    /* Overriding the default underline styling of the links */
+		    text-decoration:none !important;
+		    white-space:nowrap;
+
+		    display:inline-block;
+		    vertical-align:baseline;
+		    position:relative;
+		    cursor:pointer;
+		    padding:10px 20px;
+		    color:#0f4b6d !important;
+
+		    border:1px solid #84acc3 !important;
+
+		    /* A fallback background color */
+		    background-color: #48b5f2;
+	}
 
 
 
