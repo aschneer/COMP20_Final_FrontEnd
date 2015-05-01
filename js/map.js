@@ -24,6 +24,9 @@ var req_map = new XMLHttpRequest();
 	// };
 // endTime is a Javascript Date object.
 var listings = [];
+// Variable to store user's location
+// and marker information.
+var client = {};
 
 // FUNCTIONS:
 
@@ -162,15 +165,21 @@ function map_update()
 
 function dataReady() {
 	if (req.readyState == 4 && req.status == 200) {
-			console.log("offers came in from database");
-
 		data = JSON.parse(req.responseText);
 		for (i = 0; i < data.length; i++) {
 			addListing(data[i].lat, data[i].lng, data[i].address, data[i].seller, data[i].food, data[i].when, data[i].quantity, data[i].price);
 		}
-			console.log(listings);
-
+		initializeClient();
 	}
+/*	
+	map.setCenter(userLocation);
+
+	user_marker = new google.maps.Marker({
+		position: userLocation,
+		title: "You are here!",
+	});
+	user_marker.setMap(map);
+*/
 	// TODO: if failed req, display map with no markers
 	// else if (req.readyState == 4 && req.status == 500) {
 	// 	map = document.getElementById("map-canvas");
@@ -179,20 +188,58 @@ function dataReady() {
 	// }
 }
 
-
+function initializeClient() {
+	// Get client's location.
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		    userLat = position.coords.latitude;
+		    userLng = position.coords.longitude;
+			// Create a marker for the client
+			// on the Google Map.
+			var userIcon = "./assets/smiley_small.png";
+			var userMarkerOptions = {
+				map: map,
+				title: String("You"),
+				position: new google.maps.LatLng(userLat, userLng),
+				visible: true,
+				icon: userIcon
+			};
+			var newUserMarker = new google.maps.Marker(userMarkerOptions);
+			var userInfoWindowContent = "YOU ARE HERE!";
+			var newUserInfoWindow = new google.maps.InfoWindow({
+					content: userInfoWindowContent
+			});
+			var newUserClickListener = google.maps.event.addListener(newUserMarker,"click",function(){
+					newUserInfoWindow.open(map,newUserMarker)
+			});
+			// Update global variable which
+			// stores information about the client.
+			client = {
+				marker: newUserMarker,
+				infoWindow: newUserInfoWindow,
+				clickListener: newUserClickListener,
+				lat: userLat,
+				lng: userLng
+			};
+			console.log(client);
+		});
+	}
+}
 
 // Initial function runs when HTML body loads.
 function init()
 {
 	// Object containing initial options for the map.
 	var mapOptions = {
-			zoom: 8,
+			zoom: 13,
 			center: new google.maps.LatLng(42.407690,-71.118948),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	// Create the map object.  This is global.
 	map = new google.maps.Map(document.getElementById('map-canvas'),
 		 	mapOptions);
+
+
 
 	console.log("before map update");
 	map_update(); 

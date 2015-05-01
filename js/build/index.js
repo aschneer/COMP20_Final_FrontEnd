@@ -155,6 +155,7 @@ function dataReady_sellmode_unclaimed() {
 $(document).ready(function () {
 	load_buymode_unclaimed();
 	init();
+
 	$("#submit_offer_form").hide();
 	$("#claimed_offers").hide();
 	$("#restaurant_div").hide();
