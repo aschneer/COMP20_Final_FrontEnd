@@ -10,7 +10,8 @@ OfferSidebar = React.createClass({
         			return (
         				<Offer  key 		=	{offer._id}
         						id 			= 	{offer._id}
-        						provider	=	{offer.provider} 
+        						username 	=	{offer.username} 
+        						price 		= 	{offer.price}
         						food 		=	{offer.food} 
 					  			address 	= 	{offer.address}
 					  			when 		= 	{offer.when} /> );
@@ -26,12 +27,13 @@ Offer = React.createClass({
     },
     render: function() {
         return (
-            <li className="offer">
-            	<div onClick={this.handleClick}>
-            		<p> Provider: {this.props.provider}</p>
-            		<p> Food: {this.props.food}</p>
-            		<p> Address: {this.props.address}</p>
-            		<p> When: {this.props.when}</p>
+            <li>
+            	<div className="offer" onClick={this.handleClick}>
+            		<p className="offer-when"> When: {this.props.when}</p>
+	            	<p className="offer-food"> Food: {this.props.food}</p>
+	            	<p className="offer-price"> Price: {this.props.price}</p>
+            		<p className="offer-username"> Provider: {this.props.username}</p>
+            		<p className="offer-address"> Address: {this.props.address}</p>
             	</div>
             </li>
         );
