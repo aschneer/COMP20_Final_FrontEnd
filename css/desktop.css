@@ -7,7 +7,7 @@
 
 	body{
 	  	padding-top:50px; /*padding for navbar*/
-	  	/*margin-bottom: 200px;*/
+	  	margin-bottom: 100px;
 	}
 
 	h2 {
@@ -70,7 +70,7 @@
 	}
 
 	.navbar-custom .icon-bar {
-		background-color: white; /*#fff;*/
+		background-color: #fff;
 	}
 
 	.navbar-custom {
@@ -83,6 +83,15 @@
 	.navbar-custom li>a:hover,.navbar-custom li>a:focus {
 		background-color:#FF9D9D;
 	}
+
+	.navbar-custom li>a:link,.navbar-custom {
+		background-color:#FF7373;
+	}
+
+	#username_navbar a {
+		background-color:#FF7373;
+	}
+
 
 	.navbar-custom a{
 	    color:#fefefe;
