@@ -2,6 +2,8 @@
 
 // Map object.
 var map;
+var req_map = new XMLHttpRequest();
+
 // Array of object with all information
 // about each listing (marker,
 // info window, event listener handle).
@@ -15,8 +17,8 @@ var map;
 	// 	var lat;
 	// 	var lng;
 	// 	var address;
-	// 	var restaurant;
-	// 	var description;
+	// 	var seller;
+	// 	var food;
 	// 	var endTime;
 	// 	var price;
 	// };
@@ -28,7 +30,7 @@ var listings = [];
 // Add marker to the map and
 // store its information in the
 // global "listings" array.
-function addListing(lat,lng,address,restaurant,description,when)
+function addListing(lat,lng,address,seller,food,when,qty,price)
 {
 	var newIndex = listings.length;
 	var markerOptions = {
@@ -38,7 +40,7 @@ function addListing(lat,lng,address,restaurant,description,when)
 		visible: true
 	};
 	var newMarker = new google.maps.Marker(markerOptions);
-	var infoWindowContent = "Address: "+address+", Restaurant: " + restaurant + ", Description: " + description + ", When: " + when + "";
+	var infoWindowContent = "Address: " + address + ", seller: " + seller + ", food: " + food + ", When: " + when + ", QTY: " + qty + ", Price: " + price;
 	var newInfoWindow = new google.maps.InfoWindow({
 			content: infoWindowContent
 	});
@@ -52,9 +54,11 @@ function addListing(lat,lng,address,restaurant,description,when)
 		lat: lat,
 		lng: lng,
 		address: address,
-		restaurant: restaurant,
-		description: description,
-		when: when
+		seller: seller,
+		food: food,
+		when: when,
+		qty: qty,
+		price: price
 	};
 	listings.push(newListing);
 
@@ -90,56 +94,83 @@ function showMarker(index)
 
 //this now gets a longitude and latitude from the address we got from the server
 //the parameter data_to_plot is an object
-function get_lat_lng(data_to_plot)
+
+// takes address as a string
+function validate_address(address)
 {
-	req_map = new XMLHttpRequest();
 	//address_to_plot = data_to_plot[i].address;
 	//all_other_info = data_to_plot;
 	//req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address="+address_to_plot+"");
 				console.log("Shit's gonna work 111");
 
-	req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address=303+Boston+Ave,+Medford,+MA", true);
-	req_map.onreadystatechange = lat_lng_ready;
+	req_map.open("get", "https://maps.googleapis.com/maps/api/geocode/json?address="+address, true);
+	req_map.onreadystatechange = validate_address_ready;
 	req_map.send();
 }
 
-function lat_lng_ready() {
+function validate_address_ready() {
 	if (req_map.readyState == 4 && req_map.status == 200) {
-			console.log("Shit's gonna work 22");
+		console.log("Shit's gonna work 22");
+		var validated_address = JSON.parse(req_map.responseText);
+		console.log(validated_address);
+		if ((validated_address.status === "OK") && (validated_address.results.length != 0)) {
+			// Call function from submit_offer.js.
+			send_offer_to_server({
+				"address": validated_address.results[0].formatted_address,
+				"lat": parseFloat(validated_address.results[0].geometry.location.lat),
+				"lng": parseFloat(validated_address.results[0].geometry.location.lng),
+				"error": false
+			});
+		} else {
+			// Call function from submit_offer.js.
+			send_offer_to_server({
+				"address": "",
+				"lat": 0,
+				"lng": 0,
+				"error": true
+			});
+		}
+	
+		// DELETE:
 
-		lat_lng_data = JSON.parse(req_map.responseText);
-		console.log(lat_lng_data);
-		//addListing(lat_lng_data[1].geometry["location"].lat,lat_lng_data[1].geometry["location"].lng,address_to_plot,all_other_info.provider,all_other_info.food,all_other_info.when);
-		addListing(lat_lng_data.results[0].geometry.location.lat,lat_lng_data.results[0].geometry["location"].lng,"303 Boston Ave","Helen's","burger","1200h");
-} else if (req_map.readyState == 4 && req_map.status == 500) {
-		console.log("invalid address. that's messed up.")
+		//addListing(validated_address[1].geometry["location"].lat,validated_address[1].geometry["location"].lng,address_to_plot,all_other_info.provider,all_other_info.food,all_other_info.when);
+		//addListing(validated_address.results[0].geometry.location.lat,validated_address.results[0].geometry["location"].lng,"303 Boston Ave","Helen's","burger","1200h");
+	//} else if (req_map.readyState == 4 && req_map.status == 500) {
+	//	console.log("invalid address. that's messed up.")
+	//}
+
 	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-//this gets the addresses from the server
-function load_offers() {
-	req = new XMLHttpRequest();
-	
-	req.open("get", "https://c20t3fdb.herokuapp.com/userOffers", true);
 
+function map_update()
+{
+	// empty listings array and clear markers from google map
+	for (var i = 0; i < listings.length; i++) {
+		deleteListing(i);
+	}
+	req = new XMLHttpRequest();
+	req.open("get", "https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=false", true);
 	req.onreadystatechange = dataReady;
 }
+
 
 function dataReady() {
 	console.log("Shit's gonna work");
 	if (req.readyState == 4 && req.status == 200) {
 		data = JSON.parse(req.responseText);
-		for (i = 0; i < data.length; i++) {			
-			get_lat_lng(data[i]);	
+		for (i = 0; i < data.length; i++) {
+			addListing(data[i].lat, data[i].lng, data[i].address, data[i].seller, data[i].food, data[i].when, data[i].quantity, data[i].price);
 		}
 	}
-	else if (req.readyState == 4 && req.status == 500) {
-		map = document.getElementById("map-canvas");
-		map.innerHTML = '<p>Oops! Something went wrong</p>';
+	// TODO: if failed req, display map with no markers
+	// else if (req.readyState == 4 && req.status == 500) {
+	// 	map = document.getElementById("map-canvas");
+	// 	map.innerHTML = '<p>Oops! Something went wrong</p>';
 		
-	}
+	// }
 }
 
 
@@ -167,8 +198,8 @@ function init()
 	//var endTimeTemp = new Date(2015,3,30,19,30,0,0);
 	//addListing(42.407690,-71.118948,"303 Boston Ave","Helen's Roast Beef","Large cheese pizza",endTimeTemp);
 	//console.log(listings);
-}
 
+}
 
 
 

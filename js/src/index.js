@@ -42,37 +42,31 @@ Offer = React.createClass({
 // REQUEST CODE HERE
 /////////////////////////////////////////////////////////////////////////
 
-var xhr;  //handles providers' offers
-var xhr2; //handles offers that will be displayed on the home page
-var xhr3; //handles unclaimed offers
-var xhr4;
+var xhr1 = new XMLHttpRequest();  //handles offers posted by a user that have been claimed
+var xhr2 = new XMLHttpRequest(); //handles claimed offers purchased by a user
+var xhr3 = new XMLHttpRequest(); //handles all unclaimed offers that can be purchased by user
+var xhr4 = new XMLHttpRequest(); //handles unclaimed offers posted by the user
+
 
 // loads offers posted by a user that have been claimed
-function load_claimed_offers()
-{
-	xhr = new XMLHttpRequest();
-	handle_request();
-}
-
-function handle_request() {
+function load_sellmode_claimed() {
 	var url = "https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=true&username=" + sessionStorage.getItem('username');
-	xhr = new XMLHttpRequest();
-	xhr.open("get", url, true);
+	xhr1.open("get", url, true);
 
-	xhr.onreadystatechange = dataReady;
-	xhr.send(null); // Go! Execute!
+	xhr1.onreadystatechange = dataReady_sellmode_claimed;
+	xhr1.send(); // Go! Execute!
 }
 
-function dataReady() {
-	if (xhr.readyState == 4 && xhr.status == 200) {
-		data = JSON.parse(xhr.responseText);
+function dataReady_sellmode_claimed() {
+	if (xhr1.readyState == 4 && xhr1.status == 200) {
+		data = JSON.parse(xhr1.responseText);
 		React.render(
 			<OfferSidebar offers={data} />,
-		  	document.getElementById('foodies')
+		  	document.getElementById('restaurant_claimed_offers')
 		);
 	}
-	else if (xhr.readyState == 4 && xhr.status == 500) {
-		foodies = document.getElementById("foodies");
+	else if (xhr1.readyState == 4 && xhr1.status == 500) {
+		foodies = document.getElementById("restaurant_claimed_offers");
 		foodies.innerHTML = '<p>Oops! Something went wrong</p>';
 	}
 }
@@ -80,21 +74,15 @@ function dataReady() {
 /////////////////////////////////////////////////////////////////////////
 
 // Loads unclaimed offers that can be purchased
-function load_unclaimed_offers() {
-	xhr3 = new XMLHttpRequest();
-	handle_request3();
-}
-
-function handle_request3() {
+function load_buymode_unclaimed() {
 	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=false';
-	xhr3 = new XMLHttpRequest();
 	xhr3.open("get", url, true);
 
-	xhr3.onreadystatechange = dataReady3;
-	xhr3.send(null); // Go! Execute!
+	xhr3.onreadystatechange = dataReady_buymode_unclaimed;
+	xhr3.send(); // Go! Execute!
 }
 
-function dataReady3() {
+function dataReady_buymode_unclaimed() {
 	if (xhr3.readyState == 4 && xhr3.status == 200) {
 		data = JSON.parse(xhr3.responseText);
 
@@ -113,21 +101,15 @@ function dataReady3() {
 /////////////////////////////////////////////////////////////////////////
 
 // Loads claimed offers purchased by a user
-function load_offers_claimed_by_user() {
-	xhr2 = new XMLHttpRequest();
-	handle_request2();
-}
-
-function handle_request2() {
+function load_buymode_claimed() {
 	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=buy&claimed=true&username=' + sessionStorage.getItem('username');
-	xhr2 = new XMLHttpRequest();
 	xhr2.open("get", url, true);
 
-	xhr2.onreadystatechange = dataReady2;
-	xhr2.send(null); // Go! Execute!
+	xhr2.onreadystatechange = dataReady_buymode_claimed;
+	xhr2.send(); // Go! Execute!
 }
 
-function dataReady2() {
+function dataReady_buymode_claimed() {
 	if (xhr2.readyState == 4 && xhr2.status == 200) {
 		data = JSON.parse(xhr2.responseText);
 		React.render(
@@ -145,30 +127,24 @@ function dataReady2() {
 ///////////////////////////////////////////////////////////////////////////////////
 
 // loads unclaimed offers posted by the user
-function load_unclaimed_offers_posted_by_user() {
-	xhr4 = new XMLHttpRequest();
-	handle_request4();
-}
-
-function handle_request4() {
+function load_sellmode_unclaimed() {
 	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=false&username=' + sessionStorage.getItem('username');
-	xhr4 = new XMLHttpRequest();
 	xhr4.open("get", url, true);
 
-	xhr4.onreadystatechange = dataReady2;
-	xhr4.send(null); // Go! Execute!
+	xhr4.onreadystatechange = dataReady_sellmode_unclaimed;
+	xhr4.send(); // Go! Execute!
 }
 
-function dataReady4() {
+function dataReady_sellmode_unclaimed() {
 	if (xhr4.readyState == 4 && xhr4.status == 200) {
-		data = JSON.parse(xhr2.responseText);
+		data = JSON.parse(xhr4.responseText);
 		React.render(
 			<OfferSidebar offers={data} />,
-		  	document.getElementById('my_unclaimed_offers')
+		  	document.getElementById('restaurant_available_items')
 		);
 	}
 	else if (xhr4.readyState == 4 && xhr4.status == 500) {
-		my_unclaimed_offers = document.getElementById("my_unclaimed_offers");
+		my_unclaimed_offers = document.getElementById("restaurant_available_items");
 		my_unclaimed_offers.innerHTML = '<p>Oops! Something went wrong</p>';
 		
 	}
@@ -177,7 +153,8 @@ function dataReady4() {
 ///////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function () {
-	load_unclaimed_offers();
+	load_buymode_unclaimed();
+	map_update();
 	$("#submit_offer_form").hide();
 	$("#claimed_offers").hide();
 	$("#restaurant_div").hide();
@@ -208,10 +185,11 @@ $(document).ready(function () {
 			$("#login_form").hide();
 			$("#signup_form").hide();
 
-			load_claimed_offers();
+			load_sellmode_unclaimed(); 
 	});
 
 	$("#show_me_food_button").click(function(){
+			load_buymode_unclaimed();
 			$("#map-canvas").show();
 			$("#submit_offer_form").hide();
 			$("#restaurant_div").hide();
@@ -221,26 +199,28 @@ $(document).ready(function () {
 	});
 
 	$("#whats_available_button").click(function(){
+			load_buymode_unclaimed();
 			$("#claimed_offers").hide();
 			$("#available_items").show();
 	});
 
 	$("#claimed_offers_button").click(function(){
-		// TODO CHECK IF THIS IS CORRECT
-			//load_offers_claimed_by_user();
+			load_buymode_claimed();
 			$("#available_items").hide();
 			$("#claimed_offers").show();
 	});
 
 	$("#restaurant_offers_button").click(function(){
 			console.log("restaurant offers click");
-			load_unclaimed_offers_posted_by_user(); // TODO CHECK THIS
+			load_buymode_unclaimed(); 
 			$("#restaurant_claimed_offers").hide();
 			$("#restaurant_available_items").show();
 	});
 
 	$("#claimed_from_restaurant_button").click(function(){
 			console.log("restaurant offers claimed click");
+			load_sellmode_claimed();
+
 			$("#restaurant_available_items").hide();
 			$("#restaurant_claimed_offers").show();
 	});
@@ -288,9 +268,5 @@ $(document).ready(function () {
 			$("#customer_div").show();
 			$("#username_navbar").hide();
 	});
-
-
-
-
 
 });

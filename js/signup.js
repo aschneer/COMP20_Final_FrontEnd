@@ -6,8 +6,7 @@ var signup_init = function() {
 	//var url = "http://localhost:5000/sendOffer";
 	var url = "https://c20t3fdb.herokuapp.com/signUp";
 	var params = "username=" + document.getElementById("signup_username").value + "&name=" + document.getElementById("name").value + 
-				"&email=" + document.getElementById("email").value + "&phone=" + document.getElementById("phone").value
-                + "&password=" + document.getElementById("signup_password").value;
+				"&email=" + document.getElementById("email").value + "&password=" + document.getElementById("signup_password").value;
     var req = new XMLHttpRequest();
 
     req.open('POST', url, true);

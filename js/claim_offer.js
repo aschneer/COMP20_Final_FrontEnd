@@ -12,8 +12,12 @@ var claim_offer = function(offer_id) {
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             console.log('worked yo.');
-            location.reload();
         }
     };
     req.send(params);
+
+    load_buymode_claimed();
+    map_update();
+    $("#available_items").hide();
+    $("#claimed_offers").show();
 };
