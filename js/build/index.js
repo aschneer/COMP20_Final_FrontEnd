@@ -145,29 +145,29 @@ function dataReady2() {
 ///////////////////////////////////////////////////////////////////////////////////
 
 // loads unclaimed offers posted by the user
-function load_claimed_offers_posted_by_user() {
-	xhr2 = new XMLHttpRequest();
+function load_unclaimed_offers_posted_by_user() {
+	xhr4 = new XMLHttpRequest();
 	handle_request4();
 }
 
 function handle_request4() {
 	var url = 'https://c20t3fdb.herokuapp.com/offers?mode=sell&claimed=false&username=' + sessionStorage.getItem('username');
-	xhr2 = new XMLHttpRequest();
-	xhr2.open("get", url, true);
+	xhr4 = new XMLHttpRequest();
+	xhr4.open("get", url, true);
 
-	xhr2.onreadystatechange = dataReady2;
-	xhr2.send(null); // Go! Execute!
+	xhr4.onreadystatechange = dataReady2;
+	xhr4.send(null); // Go! Execute!
 }
 
 function dataReady4() {
-	if (xhr2.readyState == 4 && xhr2.status == 200) {
+	if (xhr4.readyState == 4 && xhr4.status == 200) {
 		data = JSON.parse(xhr2.responseText);
 		React.render(
 			React.createElement(OfferSidebar, {offers: data}),
 		  	document.getElementById('my_unclaimed_offers')
 		);
 	}
-	else if (xhr2.readyState == 4 && xhr2.status == 500) {
+	else if (xhr4.readyState == 4 && xhr4.status == 500) {
 		my_unclaimed_offers = document.getElementById("my_unclaimed_offers");
 		my_unclaimed_offers.innerHTML = '<p>Oops! Something went wrong</p>';
 		
@@ -226,12 +226,15 @@ $(document).ready(function () {
 	});
 
 	$("#claimed_offers_button").click(function(){
+		// TODO CHECK IF THIS IS CORRECT
+			//load_offers_claimed_by_user();
 			$("#available_items").hide();
 			$("#claimed_offers").show();
 	});
 
 	$("#restaurant_offers_button").click(function(){
 			console.log("restaurant offers click");
+			load_unclaimed_offers_posted_by_user(); // TODO CHECK THIS
 			$("#restaurant_claimed_offers").hide();
 			$("#restaurant_available_items").show();
 	});
