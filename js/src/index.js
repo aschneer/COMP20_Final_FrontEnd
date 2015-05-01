@@ -10,7 +10,7 @@ OfferSidebar = React.createClass({
         			return (
         				<Offer  key 		=	{offer._id}
         						id 			= 	{offer._id}
-        						provider 	=	{offer.provider} 
+        						provider	=	{offer.provider} 
         						food 		=	{offer.food} 
 					  			address 	= 	{offer.address}
 					  			when 		= 	{offer.when} /> );
@@ -163,6 +163,7 @@ $(document).ready(function () {
 	$("#signup_form").hide();
 	$("#restaurant_claimed_offers").hide();
 	$("#restaurant_available_items").hide();
+	$("#whats_available_button").addClass('active');
 
 		if (sessionStorage.length == 0){
 			$("#logout_navbar").hide();
@@ -186,6 +187,11 @@ $(document).ready(function () {
 			$("#login_form").hide();
 			$("#signup_form").hide();
 
+			$("#restaurant_offers_button").addClass('active');
+			$("#claimed_from_restaurant_button").removeClass('active');
+
+
+
 			load_sellmode_unclaimed(); 
 	});
 
@@ -197,18 +203,37 @@ $(document).ready(function () {
 			$("#customer_div").show();
 			$("#login_form").hide();
 			$("#signup_form").hide();
+			$("#whats_available_button").addClass('active');
+			$("#claimed_offers_button").removeClass('active');
+	});
+
+	$("#buy_button").click(function(){
+			load_buymode_unclaimed();
+			$("#map-canvas").show();
+			$("#submit_offer_form").hide();
+			$("#restaurant_div").hide();
+			$("#customer_div").show();
+			$("#login_form").hide();
+			$("#signup_form").hide();
+			$("#whats_available_button").addClass('active');
+			$("#claimed_offers_button").removeClass('active');
 	});
 
 	$("#whats_available_button").click(function(){
 			load_buymode_unclaimed();
 			$("#claimed_offers").hide();
 			$("#available_items").show();
+			$(this).addClass('active');
+			$("#claimed_offers_button").removeClass('active');
 	});
 
 	$("#claimed_offers_button").click(function(){
 			load_buymode_claimed();
 			$("#available_items").hide();
 			$("#claimed_offers").show();
+			$(this).addClass('active');
+			$("#whats_available_button").removeClass('active');
+
 	});
 
 	$("#restaurant_offers_button").click(function(){
@@ -216,6 +241,9 @@ $(document).ready(function () {
 			load_buymode_unclaimed(); 
 			$("#restaurant_claimed_offers").hide();
 			$("#restaurant_available_items").show();
+
+			$(this).addClass('active');
+			$("#claimed_from_restaurant_button").removeClass('active');
 	});
 
 	$("#claimed_from_restaurant_button").click(function(){
@@ -224,6 +252,9 @@ $(document).ready(function () {
 
 			$("#restaurant_available_items").hide();
 			$("#restaurant_claimed_offers").show();
+
+			$(this).addClass('active');
+			$("#restaurant_offers_button").removeClass('active');
 	});
 
 	$("#login_button").click(function(){

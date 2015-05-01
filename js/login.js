@@ -12,14 +12,11 @@ var login_init = function() {
 
     req.open('POST', url, true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    console.log("Wagwan");
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
-            // SHOULD CALL REUPDATED SOMETHING ELSE
             console.log('worked yo.');
         }
     };
     req.send(params);
-	/*data = JSON.parse(result);*/
     sessionStorage.setItem('username', username);	
 };

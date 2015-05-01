@@ -50,12 +50,26 @@
 		float: left;
 		width: 50%;
 		background-color: #4db6ac;
+		height: 50px;
 	}
 
 	.offers_and_claims_navbar li:hover, li:active{
 		background-color: #00897b;
 	}
 
+	#claimed_offers_button.active{
+		background-color: #00897b;
+	}
+	#whats_available_button.active{
+		background-color: #00897b;
+	}
+	#restaurant_offers_button.active{
+		background-color: #00897b;
+	}
+
+	#claimed_from_restaurant_button.active{
+		background-color: #00897b;
+	}
 
 	.navbar-custom .icon-bar {
 		background-color:#fff;
@@ -103,6 +117,12 @@
 
 	.col-xs-4 {
 		padding-right: 0;
+		padding-left: 0;
+		padding-top: 0;
+	}
+
+	li.offer div {
+
 	}
 
 	#map-canvas {
