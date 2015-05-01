@@ -32,45 +32,79 @@ Don’t have to wait for food
 ## __Features:__
 
 * Web form for restaurant to input information about a food item (restaurant, location, food description, time when ready, price)
+* Users
+    * can signUp/signIn to view information
 * Master list of all food items that are currently live on the site
-* Ability to sort list by restaurant, distance from current location, time when ready, and price
-* Ability to “buy” (reserve) a food item on the list with a single click
+* Ability to "offer" food items to the general public
+    * browse offers you've made
+    * browse offers you've made that have been claimed
+* Ability to "claim” (reserve) a food item on the list with a single click
+    * browse all offers available to claim
+    * browse offers you have claimed
 * Google Maps interface to display all the current food items that are live and where they are located
-* Graph displaying usage data (for example, food posts per hour, food sales, etc.)
+* Send emails when:
+    * you signup
+    * you post an offer
+    * you claim an offer
+
+### __Requirements:__
+
+* GitHub Repositories:
+    * client-side: 
+        * github: https://github.com/tuftsdev/comp20-spring2015-team3
+        * gh-pages: http://tuftsdev.github.io/comp20-spring2015-team3
+    * server-side: 
+        * github: https://github.com/hunter-/teamServer
+        * heroku: https://c20t3server.herokuapp.com/
+* Server-side Framework Used:
+    * node.js
+* APIs:
+    * Google Maps
+        * for geolocation
+    * Google Geocoding
+        * for address validation
+    * sendgrid 
+        * for emails
 
 ### __Pick 5:__
 
 * Geolocation
 * Server-side data persistence
+    * mongodb
 * Client-side data persistence
     * 'your offers'
-* Front-end framework (React)
-* SMSes
+* Front-end frameworks
+    * React
+    * Bootstrap
+* emails
 
 ##__Data collected and used:__
 
-* Location and name of restaurant
-* Description of food
-* Price
-* Time when it will be ready
-* Link to restaurant’s online menu
+* Users:
+    * username
+    * name
+    * email
+    * password
+* Offers:
+    * Food Description
+    * Time when ready
+    * Location
+    * Price
+    * Username of Seller
+    * If claimed: 
+        * Username of Buyer
 
-##__Algorithms and special techniques used:__
+##__Screenshots:__
 
-* Sorting the list of restaurants by proximity/price/time the food will be ready etc 
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/map-desktop.png "Map Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/map-mobile.png "Map Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-desktop.png "Post Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/post-mobile.png "Post Screen for Mobile")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/signin-desktop.png "Sign-in Screen for Desktop")
+![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/screenshots/signin-mobile.png "Sign-in Screen for Mobile")
 
-##__APIs:__
 
-* Google Maps API
-* Google Graphs API
-
-##__Wireframes:__
-
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Map.png "Map Screen for Desktop")
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Post.png "Post Screen for Mobile")
-![alt text](https://github.com/tuftsdev/comp20-spring2015-team3/blob/master/wireframes/Graphs.png "Graphs Screen for Mobile")
-
-#Comments by Ming
+#Comments by Ming (on original submission 2015/03/05)
 1. I love your list of features, your team did it right
 2. I'm not really buying into using Google Graphs --seems rather useless
 3. I assume data will be entered by users?
