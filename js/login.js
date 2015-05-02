@@ -14,7 +14,6 @@ var login_init = function() {
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
-            console.log('worked yo.');
         }
     };
     req.send(params);
